@@ -7,6 +7,7 @@ import nl.novi.stuivenberg.springboot.example.security.payload.request.LoginRequ
 import nl.novi.stuivenberg.springboot.example.security.payload.request.SignupRequest;
 import nl.novi.stuivenberg.springboot.example.security.payload.response.JwtResponse;
 import nl.novi.stuivenberg.springboot.example.security.payload.response.MessageResponse;
+import nl.novi.stuivenberg.springboot.example.security.repository.ReservationRepository;
 import nl.novi.stuivenberg.springboot.example.security.repository.RoleRepository;
 import nl.novi.stuivenberg.springboot.example.security.repository.UserRepository;
 import nl.novi.stuivenberg.springboot.example.security.service.security.jwt.JwtUtils;
@@ -37,7 +38,9 @@ public class AuthorizationService {
     private PasswordEncoder encoder;
     private RoleRepository roleRepository;
     private AuthenticationManager authenticationManager;
+    private ReservationRepository reservationRepository;
     private JwtUtils jwtUtils;
+
 
     @Autowired
     public void setUserRepository(UserRepository userRepository) {
@@ -58,6 +61,11 @@ public class AuthorizationService {
     public void setAuthenticationManager(AuthenticationManager authenticationManager) {
         this.authenticationManager = authenticationManager;
     }
+
+//  @Autowired
+//  public void setReservationRepository(ReservationRepository reservationRepository) {
+//      this.reservationRepository = reservationRepository;
+//  }
 
     @Autowired
     public void setJwtUtils(JwtUtils jwtUtils) {

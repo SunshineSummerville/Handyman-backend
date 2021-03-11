@@ -1,11 +1,12 @@
 package nl.novi.stuivenberg.springboot.example.security.controller;
 
+import nl.novi.stuivenberg.springboot.example.security.domain.Reservation;
+import nl.novi.stuivenberg.springboot.example.security.repository.ReservationRepository;
 import nl.novi.stuivenberg.springboot.example.security.service.TestService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.Optional;
 
 @CrossOrigin(origins = "*", maxAge = 3600)
 @RestController
@@ -13,6 +14,8 @@ import org.springframework.web.bind.annotation.RestController;
 public class TestController {
 
     private final TestService testService;
+
+    public ReservationRepository reservationRepository;
 
     @Autowired
     public TestController(TestService testService) {
@@ -38,4 +41,7 @@ public class TestController {
     public String adminAccess() {
         return testService.generateAdminContent();
     }
+
+
+
 }

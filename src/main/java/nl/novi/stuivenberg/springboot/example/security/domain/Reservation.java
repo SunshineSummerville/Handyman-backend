@@ -30,8 +30,8 @@ public class Reservation {
     // om te voorkomen dat dat er oneindige loop van users worden aangemaakt. De bidirectionele relatie zorgt ervoor dat we de "user" kunnen opvragen en de "reservation" automatisch meekomt. De reservering  heeft ook users en die komt ook automatisch mee.
     private User customer;
 
-    @ManyToOne
-    private JobCategory jobCategory;
+//    @ManyToOne
+//    private JobCategory jobCategory;
 
 
     public Reservation(){ // lege constructor
@@ -69,12 +69,13 @@ public class Reservation {
     public void setCustomer(User customer) {
         this.customer = customer;
     }
+//
+//    public JobCategory getJobCategory() {
+//        return jobCategory;
+//    }
+//
+//    public void setJobCategory(JobCategory jobCategory) {
+//        this.jobCategory = jobCategory;
+//    }
 
-    public JobCategory getJobCategory() {
-        return jobCategory;
-    }
-
-    public void setJobCategory(JobCategory jobCategory) {
-        this.jobCategory = jobCategory;
-    }
 }
