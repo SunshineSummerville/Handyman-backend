@@ -134,7 +134,7 @@ De backend-server communiceert het volgende (soortgelijks) terug:
     "email": "mod3@mod.com",
     "roles": [
         "ROLE_USER",
-        "ROLE_MODERATOR"
+        "ROLE_HANDYMAN"
     ],
     "accessToken": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJtb2QzIiwiaWF0IjoxNTk1NTg4MDk0LCJleHAiOjE1OTU2NzQ0OTR9.AgP4vCsgw5TMj_ePbPzMJXWWBNfFphJBHzAvTFyW9fzZ6UL-JO42pRq9puXAOlGh4hTijspAQAS-J8doHqADTA",
     "tokenType": "Bearer"

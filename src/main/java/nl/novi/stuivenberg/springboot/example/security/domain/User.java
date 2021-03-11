@@ -42,11 +42,11 @@ public class User {
     @Column(nullable = false)
     private String password;
 
-//    @OneToMany(mappedBy = "handyman")
-//    private List<Reservation> reservations;
-//
-//    @OneToMany(mappedBy = "customer")
-//    private List<Reservation> boughtReservations;
+    @OneToMany(mappedBy = "handyman")
+    private List<Reservation> reservations;
+
+    @OneToMany(mappedBy = "customer")
+    private List<Reservation> boughtReservations;
 
     @ManyToMany
     @JoinTable (name = "user_role",

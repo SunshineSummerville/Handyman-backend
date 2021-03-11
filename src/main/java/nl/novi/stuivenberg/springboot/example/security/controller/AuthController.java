@@ -1,6 +1,7 @@
 package nl.novi.stuivenberg.springboot.example.security.controller;
 
 import nl.novi.stuivenberg.springboot.example.security.payload.request.LoginRequest;
+import nl.novi.stuivenberg.springboot.example.security.payload.request.ReservationRequest;
 import nl.novi.stuivenberg.springboot.example.security.payload.request.SignupRequest;
 import nl.novi.stuivenberg.springboot.example.security.payload.response.JwtResponse;
 import nl.novi.stuivenberg.springboot.example.security.payload.response.MessageResponse;
@@ -41,5 +42,11 @@ public class AuthController {
     public ResponseEntity<MessageResponse> registerUser(@RequestBody SignupRequest signUpRequest) {
         return authorizationService.registerUser(signUpRequest);
     }
+
+//   reservering plaatsen, autenticatie nodig? ja, ben je ingelogd?
+//    @PostMapping("/reservation")
+//    public ResponseEntity<MessageResponse> placeReservation(@RequestBody ReservationRequest reservationRequest) {
+//        return authorizationService.placeRaservation (reservationRequest);
+//    }
 
 }

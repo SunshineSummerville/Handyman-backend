@@ -113,10 +113,10 @@ public class AuthorizationService {
                         roles.add(adminRole);
 
                         break;
-                    case "mod":
-                        Role modRole = roleRepository.findByName(ERole.ROLE_MODERATOR)
+                    case "handyman":
+                        Role handymanRole = roleRepository.findByName(ERole.ROLE_HANDYMAN)
                                 .orElseThrow(() -> new RuntimeException(ROLE_NOT_FOUND_ERROR));
-                        roles.add(modRole);
+                        roles.add(handymanRole);
 
                         break;
                     default:
