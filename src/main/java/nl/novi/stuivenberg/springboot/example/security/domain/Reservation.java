@@ -1,5 +1,6 @@
 package nl.novi.stuivenberg.springboot.example.security.domain;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import org.hibernate.annotations.GenericGenerator;
 
@@ -26,22 +27,25 @@ public class Reservation {
     private String reservationDate;
 
     @ManyToOne
+    @JsonIgnore
     private User handyman;
 
     @ManyToOne
-    @JsonIgnoreProperties
-    // om te voorkomen dat dat er oneindige loop van users worden aangemaakt. De bidirectionele relatie zorgt ervoor dat we de "user" kunnen opvragen en de "reservation" automatisch meekomt. De reservering  heeft ook users en die komt ook automatisch mee.
+    @JsonIgnore
+    // JsonIgnore is om te voorkomen dat dat er oneindige loop van users worden aangemaakt.
+    // De bidirectionele relatie zorgt ervoor dat we de "user" kunnen opvragen
+    // en de "reservation" automatisch meekomt. De reservering  heeft ook users en die komt ook automatisch mee.
     private User customer;
 
 
-//    @ManyToOne
-//    private JobCategory Category;
+    @ManyToOne
+    private Category Category;
 
-//    @ManyToMany
-//    @JoinTable (name = "reservation_category",
-//    joinColumns = @JoinColumn(name = "reservationNr"),
-//    inverseJoinColumns = @JoinColumn(name = "category_id"))
-//    private Set<Category> categories;
+    @ManyToMany
+    @JoinTable (name = "reservation_category",
+    joinColumns = @JoinColumn(name = "reservationNr"),
+    inverseJoinColumns = @JoinColumn(name = "category_id"))
+    private Set<Category> categories;
 
 
     public Reservation(){ // lege constructor

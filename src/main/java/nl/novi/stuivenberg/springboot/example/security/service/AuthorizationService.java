@@ -64,10 +64,10 @@ public class AuthorizationService {
         this.authenticationManager = authenticationManager;
     }
 
-//    @Autowired
-//    public void setReservationRepository(ReservationRepository reservationRepository) {
-//      this.reservationRepository = reservationRepository;
-//    }
+    @Autowired
+    public void setReservationRepository(ReservationRepository reservationRepository) {
+      this.reservationRepository = reservationRepository;
+    }
 
     @Autowired
     public void setJwtUtils(JwtUtils jwtUtils) {
@@ -193,7 +193,7 @@ public class AuthorizationService {
 //                //encoder.encode(reservationRequest.));
 //
 //
-//        //reservationRepository.save(reservation);
+//        reservationRepository.save(reservation);
 //
 //        return ResponseEntity.ok(new MessageResponse("User registered successfully!"));
 //    }

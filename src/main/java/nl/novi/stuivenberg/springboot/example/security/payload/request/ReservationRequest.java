@@ -1,7 +1,7 @@
 package nl.novi.stuivenberg.springboot.example.security.payload.request;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 //import nl.novi.stuivenberg.springboot.example.security.domain.JobCategory;
 import nl.novi.stuivenberg.springboot.example.security.domain.User;
 
@@ -19,12 +19,9 @@ public class ReservationRequest {
 //            pattern = "dd-mm-yyyy") //@JsonFormat is used to control the output format of the Date
     private String reservationDate;
 
-    //@ManyToOne
+
     private User handyman;
 
-   // @ManyToOne
-    @JsonIgnoreProperties
-    // om te voorkomen dat dat er oneindige loop van users worden aangemaakt. De bidirectionele relatie zorgt ervoor dat we de "user" kunnen opvragen en de "reservation" automatisch meekomt. De reservering  heeft ook users en die komt ook automatisch mee.
     private User customer;
 
 //    @ManyToOne

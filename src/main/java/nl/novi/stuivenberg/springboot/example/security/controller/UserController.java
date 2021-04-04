@@ -14,7 +14,7 @@ import java.util.Optional;
 @RequestMapping("/api")
 public class UserController {
 
-    //@Autowired
+    @Autowired
     UserService userService;
 
     @Autowired
