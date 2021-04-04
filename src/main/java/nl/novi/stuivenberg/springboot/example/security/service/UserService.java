@@ -1,8 +1,9 @@
-package nl.novi.stuivenberg.springboot.example.security.service.security;
+package nl.novi.stuivenberg.springboot.example.security.service;
 
 import nl.novi.stuivenberg.springboot.example.security.domain.ERole;
 import nl.novi.stuivenberg.springboot.example.security.domain.Role;
 import nl.novi.stuivenberg.springboot.example.security.domain.User;
+import nl.novi.stuivenberg.springboot.example.security.exception.UserNotFoundException;
 import nl.novi.stuivenberg.springboot.example.security.repository.UserRepository;
 import org.springframework.stereotype.Service;
 
@@ -15,12 +16,12 @@ import java.util.Set;
 public class UserService {
 
     //@Autowired
-    public UserRepository UserRepository;
+    public UserRepository userRepository;
 
     public List<User> findHandymanByPostalcode(String postalcode) {
         List<User> handyMen = new ArrayList<>();
 
-        List<User> foundUsers = UserRepository.findByPostalCode(postalcode);
+        List<User> foundUsers = userRepository.findByPostalCode(postalcode);
 
         for(User user : foundUsers) {
             Set<Role> foundRoles = user.getRoles();
@@ -35,25 +36,25 @@ public class UserService {
     }
 
     public List<User> getAllUsers() {
-        List<User> allUsers = UserRepository.findAll();
+        List<User> allUsers = userRepository.findAll();
         return allUsers;
     }
 
     public Optional<User> getUserById(Long userId) {
-        return UserRepository.findById(userId);
+        return userRepository.findById(userId);
     }
 
 
     public User addUser(User newUser) {
-        return UserRepository.save(newUser);
+        return userRepository.save(newUser);
     }
 
 
     public String deleteUserById (Long userId) {
-        Optional<User> user = UserRepository.findById(userId);
+        Optional<User> user = userRepository.findById(userId);
         if(user.isPresent()) {
-            UserRepository.deleteById(userId);
-            return "User met id " + user.get().getUserId() + " is verwijderd";
+            userRepository.deleteById(userId);
+            return "User met id " + user.get().getId() + " is verwijderd";
         }
         throw new UserNotFoundException("Gebruiker bestaat niet. Probeer opnieuw");
 
@@ -61,15 +62,15 @@ public class UserService {
     }
 
     public User updateUserById(Long id, User updatedUser) {
-        Optional<User> userFromDb = UserRepository.findById(id);
+        Optional<User> userFromDb = userRepository.findById(id);
 
         if(userFromDb.isPresent()) { // check of gebruiker aanwezig is adhv naam en email
-            if (checkIsValidName(updatedUser.getFirstName())) {
+            if (checkIsValidName(updatedUser.getFirstname())) {
                User user = new User();
-                User.setFirstName(updatedUser.getFirstName());
-                User.setLastName(updatedUser.getLastName());
+                User.setFirstname(updatedUser.getFirstname());
+                User.setLastname(updatedUser.getLastname());
                 User.setEmail(updatedUser.getEmail());
-                return UserRepository.save(User);
+                return userRepository.save(User);
             }
         }
         throw new UserNotFoundException(id);

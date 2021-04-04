@@ -3,6 +3,7 @@ package nl.novi.stuivenberg.springboot.example.security.controller;
 import nl.novi.stuivenberg.springboot.example.security.domain.Reservation;
 import nl.novi.stuivenberg.springboot.example.security.domain.User;
 import nl.novi.stuivenberg.springboot.example.security.repository.UserRepository;
+import nl.novi.stuivenberg.springboot.example.security.service.UserService;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -15,8 +16,8 @@ public class UserController {
     //@Autowired
     UserService userService;
 
-    //@Autowired
-    public UserRepository userRepository;
+//    @Autowired
+//    public UserRepository userRepository;
 
     @GetMapping("/handyman/{postalcode}")
     public List<User> findHandymenByPostalCode(@PathVariable String postalcode) {
