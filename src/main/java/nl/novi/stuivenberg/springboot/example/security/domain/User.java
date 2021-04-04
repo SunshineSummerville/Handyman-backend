@@ -46,7 +46,7 @@ public class User {
     private List<Reservation> reservations;
 
     @OneToMany(mappedBy = "customer")
-    private List<Reservation> boughtReservations;
+    private List<Reservation> currentReservations;
 
     @ManyToMany
     @JoinTable (name = "user_role",
@@ -166,5 +166,21 @@ public class User {
 
     public void setRoles(Set<Role> roles) {
         this.roles = roles;
+    }
+
+    public List<Reservation> getReservations() {
+        return reservations;
+    }
+
+    public void setReservations(List<Reservation> reservations) {
+        this.reservations = reservations;
+    }
+
+    public List<Reservation> getCurrentReservations() {
+        return currentReservations;
+    }
+
+    public void setCurrentReservations(List<Reservation> currentReservations) {
+        this.currentReservations = currentReservations;
     }
 }

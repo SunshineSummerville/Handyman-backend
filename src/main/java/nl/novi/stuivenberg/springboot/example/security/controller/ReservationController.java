@@ -57,9 +57,10 @@ public class ReservationController {
                 userRepository.findById(userid);
         if(user.isPresent()) {
             reservation.setCustomer(user.get());
-            return reservationRepository.save(reservation);
+            reservation.setHandyman(user.get());
+            reservationRepository.save(reservation);
         }
-        return null;
+        return reservationRepository.save(reservation);
 
 
     }

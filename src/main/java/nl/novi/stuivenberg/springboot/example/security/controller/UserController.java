@@ -4,6 +4,7 @@ import nl.novi.stuivenberg.springboot.example.security.domain.Reservation;
 import nl.novi.stuivenberg.springboot.example.security.domain.User;
 import nl.novi.stuivenberg.springboot.example.security.repository.UserRepository;
 import nl.novi.stuivenberg.springboot.example.security.service.UserService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -16,8 +17,8 @@ public class UserController {
     //@Autowired
     UserService userService;
 
-//    @Autowired
-//    public UserRepository userRepository;
+    @Autowired
+    public UserRepository userRepository;
 
     @GetMapping("/handyman/{postalcode}")
     public List<User> findHandymenByPostalCode(@PathVariable String postalcode) {
@@ -30,17 +31,14 @@ public class UserController {
     }
 
     @GetMapping (value = "/api/user/{id}")
-    public User getUserById (@PathVariable Long id) {
-        Optional<User> User = User.findById(id);
-        if(User.isPresent()) {
-            return User.get();
-        }
-        return null;
+    public User getUserById(@PathVariable Long userId) {
+        return userService.getUserById(userId);
     }
+
 
     @PostMapping(value = "api/user")
     public User saveUser (@RequestBody User newUser) {
-        return UserRepository.save(newUser);
+        return userService.saveUser(newUser);
     }
 
     @DeleteMapping(value = "/api/user/{id}")
@@ -52,6 +50,12 @@ public class UserController {
     public User updateUserById(@PathVariable long id, @RequestBody User updatedUser) {
         return userService.updateUserById(id, updatedUser);
     }
+
+    @PutMapping("/api/user/{id}/reservation") // add made reservation: reservation is made by customer which will be assigned to a appuser in the database
+    public User addReservationToUser(@PathVariable long id, @RequestBody Reservation newReservation) {
+        return userService.addReservationToUser(id, newReservation);
+    }
+
 
 
     //    @DeleteMapping (value = "/api/appuser/{id}")
@@ -80,29 +84,8 @@ public class UserController {
 //                });
 //    }
 //
-    @PutMapping("/api/user/{id}/reservation") // add made reservation: reservation is made by customer which will be assigned to a appuser in the database
-    public User addReservationToUser(@PathVariable long id, @RequestBody Reservation newReservation) {
-        Optional<User> user = UserRepository.findById(id);
 
-        if(user.isPresent()) { // check: gebruiker is aanwezig
-            User userFromDb = user.get();
-            List<Reservation> currentReservations = userFromDb.getReservations();
 
-            newReservation.setCustomer (userFromDb); // ??
-//
-//            if(newReservation.get () == null || newReservation.getappUser ().getId() != id) {
-//
-//            }
-
-            currentReservations.add(newReservation);
-            userFromDb.setReservations(currentReservations);
-
-            return UserRepository.save(userFromDb);
-        }
-
-        return null;
-
-    }
 
 //    @PostMapping("/api/user/fill")
 //    public User addTestUsers() {

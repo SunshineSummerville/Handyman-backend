@@ -23,7 +23,7 @@ public class ReservationRequest {
     private User handyman;
 
    // @ManyToOne
-    //@JsonIgnoreProperties
+    @JsonIgnoreProperties
     // om te voorkomen dat dat er oneindige loop van users worden aangemaakt. De bidirectionele relatie zorgt ervoor dat we de "user" kunnen opvragen en de "reservation" automatisch meekomt. De reservering  heeft ook users en die komt ook automatisch mee.
     private User customer;
 
