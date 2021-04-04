@@ -10,12 +10,12 @@ public class TestService {
         return "Public Content.";
     }
 
-    @PreAuthorize("hasRole('USER') or hasRole('MODERATOR') or hasRole('ADMIN')")
+    @PreAuthorize("hasRole('USER') or hasRole('HANDYMAN') or hasRole('ADMIN')")
     public String generateUserContent() {
         return "User Content.";
     }
 
-    @PreAuthorize("hasRole('MODERATOR')")
+    @PreAuthorize("hasRole('HANDYMAN')")
     public String generateModContent() {
         return "Moderator Board.";
     }

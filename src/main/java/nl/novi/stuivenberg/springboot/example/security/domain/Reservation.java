@@ -4,10 +4,13 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import org.hibernate.annotations.GenericGenerator;
 
 import javax.persistence.*;
+import java.util.List;
+import java.util.Set;
 
 @Entity
 @Table(name = "reservation")
 public class Reservation {
+
     @Id
     @GeneratedValue(
             strategy= GenerationType.AUTO,
@@ -30,12 +33,23 @@ public class Reservation {
     // om te voorkomen dat dat er oneindige loop van users worden aangemaakt. De bidirectionele relatie zorgt ervoor dat we de "user" kunnen opvragen en de "reservation" automatisch meekomt. De reservering  heeft ook users en die komt ook automatisch mee.
     private User customer;
 
+
 //    @ManyToOne
-//    private JobCategory jobCategory;
+//    private JobCategory Category;
+
+//    @ManyToMany
+//    @JoinTable (name = "reservation_category",
+//    joinColumns = @JoinColumn(name = "reservationNr"),
+//    inverseJoinColumns = @JoinColumn(name = "category_id"))
+//    private Set<Category> categories;
 
 
     public Reservation(){ // lege constructor
 
+    }
+
+    public Reservation(String reservationDate) { // constructor gelinkt met controller
+        this.reservationDate = reservationDate;
     }
 
     public long getReservationNr() {

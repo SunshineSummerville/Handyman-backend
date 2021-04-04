@@ -1,27 +1,32 @@
 //package nl.novi.stuivenberg.springboot.example.security.domain;
 //
-//import javax.persistence.Column;
-//import javax.persistence.Entity;
-//import javax.persistence.Id;
-//import javax.persistence.ManyToMany;
+//import com.fasterxml.jackson.annotation.JsonIgnore;
+//import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+//import org.hibernate.annotations.GenericGenerator;
+//
+//import javax.persistence.*;
 //import java.util.List;
 //
 //@Entity
-//public class JobCategory {
+//public class Category {
 //
 //    @Id
+//    @GeneratedValue(strategy = GenerationType.AUTO, generator = "native")
+//    @GenericGenerator(name = "native", strategy = "native")
 //    private String categoryName;// = Primary Key
 //    @Column(nullable = false)
 //    private String price; // start tarief - optioneel
 //    @Column(nullable = false)
 //    private String jobDescription;
 //
-//    @ManyToMany(mappedBy = "possibleCategories")
+//    @JsonIgnore
+//    @ManyToMany(mappedBy = "possible_categories",
+//    fetch = FetchType.LAZY)
 //    private List<User> handymen;
 //
 //
 //
-//    public JobCategory(){ //lege constuctor
+//    public Category(){ //lege constuctor
 //
 //    }
 //

@@ -1,9 +1,11 @@
 package nl.novi.stuivenberg.springboot.example.security.service;
 
 import nl.novi.stuivenberg.springboot.example.security.domain.ERole;
+import nl.novi.stuivenberg.springboot.example.security.domain.Reservation;
 import nl.novi.stuivenberg.springboot.example.security.domain.Role;
 import nl.novi.stuivenberg.springboot.example.security.domain.User;
 import nl.novi.stuivenberg.springboot.example.security.payload.request.LoginRequest;
+import nl.novi.stuivenberg.springboot.example.security.payload.request.ReservationRequest;
 import nl.novi.stuivenberg.springboot.example.security.payload.request.SignupRequest;
 import nl.novi.stuivenberg.springboot.example.security.payload.response.JwtResponse;
 import nl.novi.stuivenberg.springboot.example.security.payload.response.MessageResponse;
@@ -62,10 +64,10 @@ public class AuthorizationService {
         this.authenticationManager = authenticationManager;
     }
 
-//  @Autowired
-//  public void setReservationRepository(ReservationRepository reservationRepository) {
+//    @Autowired
+//    public void setReservationRepository(ReservationRepository reservationRepository) {
 //      this.reservationRepository = reservationRepository;
-//  }
+//    }
 
     @Autowired
     public void setJwtUtils(JwtUtils jwtUtils) {
@@ -107,6 +109,7 @@ public class AuthorizationService {
 
         Set<String> strRoles = signUpRequest.getRole();
         Set<Role> roles = new HashSet<>();
+
 
         if (strRoles == null) {
             Role userRole = roleRepository.findByName(ERole.ROLE_USER)
@@ -173,5 +176,26 @@ public class AuthorizationService {
                 userDetails.getEmail(),
                 roles));
     }
+
+//    public ResponseEntity<MessageResponse> saveReservation(@Valid ReservationRequest reservationRequest) {
+//        if (Boolean.TRUE.equals(reservationRepository.existsByReservationNr(reservationRequest.getReservationNr()))) {
+//            return ResponseEntity
+//                    .badRequest()
+//                    .body(new MessageResponse("Error: Reservation is already taken!"));
+//        }
+//
+//        // Create new reservation
+//        Reservation reservation = new Reservation(reservationRequest.getReservationNr(),
+//                reservationRequest.getReservationDate(),
+//                reservationRequest.getCustomer(),
+//                reservationRequest.getHandyman();
+//
+//                //encoder.encode(reservationRequest.));
+//
+//
+//        //reservationRepository.save(reservation);
+//
+//        return ResponseEntity.ok(new MessageResponse("User registered successfully!"));
+//    }
 
 }

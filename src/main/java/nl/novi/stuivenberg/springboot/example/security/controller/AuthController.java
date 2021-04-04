@@ -43,10 +43,6 @@ public class AuthController {
         return authorizationService.registerUser(signUpRequest);
     }
 
-   //reservering plaatsen, autenticatie nodig? ja, ben je ingelogd?
-//    @PostMapping("/reservation")
-//    public ResponseEntity<MessageResponse> placeReservation(@RequestBody ReservationRequest reservationRequest) {
-//        return authorizationService.placeRaservation (reservationRequest);
-//    }
+
 
 }

@@ -32,7 +32,7 @@ public class TestController {
         return testService.generateUserContent();
     }
 
-    @GetMapping("/mod")
+    @GetMapping("/handyman")
     public String moderatorAccess() {
         return testService.generateModContent();
     }
