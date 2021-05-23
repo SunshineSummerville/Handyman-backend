@@ -30,28 +30,28 @@ public class UserController {
         return userService.getAllUsers();
     }
 
-    @GetMapping (value = "/api/user/{id}")
+    @GetMapping (value = "/user/{id}")
     public User getUserById(@PathVariable Long userId) {
         return userService.getUserById(userId);
     }
 
 
-    @PostMapping(value = "api/user")
+    @PostMapping(value = "/user")
     public User saveUser (@RequestBody User newUser) {
         return userService.saveUser(newUser);
     }
 
-    @DeleteMapping(value = "/api/user/{id}")
+    @DeleteMapping(value = "/user/{id}")
     public String deleteUser(@PathVariable long id) {
         return userService.deleteUserById (id);
     }
 
-    @PutMapping(value = "/api/user/{id}")
+    @PutMapping(value = "/user/{id}")
     public User updateUserById(@PathVariable long id, @RequestBody User updatedUser) {
         return userService.updateUserById(id, updatedUser);
     }
 
-    @PutMapping("/api/user/{id}/reservation") // add made reservation: reservation is made by customer which will be assigned to a appuser in the database
+    @PutMapping("/user/{id}/reservation") // add made reservation: reservation is made by handyman which will be assigned to a appuser in the database
     public User addReservationToUser(@PathVariable long id, @RequestBody Reservation newReservation) {
         return userService.addReservationToUser(id, newReservation);
     }

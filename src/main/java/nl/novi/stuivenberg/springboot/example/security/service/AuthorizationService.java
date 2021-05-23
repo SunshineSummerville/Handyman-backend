@@ -150,7 +150,7 @@ public class AuthorizationService {
      *
      * Wanneer de gebruikersnaam/wachtwoord combinatie niet klopt, wordt er een Runtime exception gegooid:
      * 401 Unauthorized. Deze wordt gegooid door
-     * {@link nl.novi.stuivenberg.springboot.example.security.service.security.jwt.AuthEntryPointJwt}
+     * {@link nl.novi.stuivenberg.springboot.example.security.service.security.jwt.AuthEntryPointJwt} // waarom zou je de link verwijderen?
      *
      *
      * @param loginRequest De payload met username en password.

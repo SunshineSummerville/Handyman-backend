@@ -14,8 +14,8 @@ public class Reservation {
 
     @Id
     @GeneratedValue(
-            strategy= GenerationType.AUTO,
-            generator="native"
+            strategy = GenerationType.AUTO,
+            generator ="native"
     )
     @GenericGenerator(
             name = "native",
@@ -48,12 +48,18 @@ public class Reservation {
     private Set<Category> categories;
 
 
-    public Reservation(){ // lege constructor
+    public Reservation() { // lege constructor
 
     }
 
     public Reservation(String reservationDate) { // constructor gelinkt met controller
         this.reservationDate = reservationDate;
+    }
+
+    public Reservation(String reservationDate, User handyman, User customer) {
+        this.reservationDate = reservationDate;
+        this.handyman = handyman;
+        this.customer = customer;
     }
 
     public long getReservationNr() {
