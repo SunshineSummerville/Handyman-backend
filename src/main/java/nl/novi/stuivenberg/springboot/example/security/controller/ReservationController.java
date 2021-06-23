@@ -22,7 +22,7 @@ public class ReservationController {
     @Autowired
     public UserRepository userRepository;
 
-    @GetMapping(value = "/api/Reservation")
+    @GetMapping(value = "/api/reservation")
     public List<Reservation> getReservations() {
         List<Reservation> ReservationList = reservationRepository.findAll();
         return ReservationList;
@@ -34,18 +34,18 @@ public class ReservationController {
                 () -> new ReservationNotFoundException(id));
     }
 
-    @PostMapping(value = "/api/Reservation")
+    @PostMapping(value = "/api/reservation")
     public Reservation saveReservation(@RequestBody Reservation newReservation) {
         return reservationRepository.save (newReservation);
     }
 
 
-    @DeleteMapping(value = "/api/Reservation/{id}")
+    @DeleteMapping(value = "/api/reservation/{id}")
     public void deleteReservation(@PathVariable Long id) {
         reservationRepository.deleteByReservationNr(id);
     }
 
-    @PostMapping(value = "/api/Reservation/{userid}")
+    @PostMapping(value = "/api/reservation/{userid}")
     public Reservation addReservationToUserById(@PathVariable long userid,
                                                 @RequestBody ReservationRequest reservationRequest) {
 
