@@ -22,6 +22,8 @@ public class User {
     @Column(columnDefinition = "serial") //serial elke entry ophogen met 1 opvolgende
     private long id;
     private String username;
+    @Column(nullable = false)
+    private String password;
     @Column(nullable = false)// kolom mag niet leeg zijn
     private String firstname;
     @Column(nullable = false)
@@ -31,16 +33,15 @@ public class User {
     @Column(nullable = false)
     private String phonenumber;
     @Column(nullable = false)
-    private String streetname;
+    private String street;
     @Column(nullable = false)
     private String housenumber;
     @Column(nullable = false)
     private String postalcode;
-    @Column(nullable = false)
+    @Column(nullable = true)
     private String provincie;
 
-    @Column(nullable = false)
-    private String password;
+
 
     @OneToMany(mappedBy = "handyman")
     private List<Reservation> reservations;
@@ -58,13 +59,13 @@ public class User {
 
     }
 
-    public User(String username, String firstname, String lastname, String email, String phonenumber, String streetname, String housenumber, String postalcode, String provincie, String password) {
+    public User(String username, String firstname, String lastname, String email, String phonenumber, String street, String housenumber, String postalcode, String provincie, String password) {
         this.username = username;
         this.firstname = firstname;
         this.lastname = lastname;
         this.email = email;
         this.phonenumber = phonenumber;
-        this.streetname = streetname;
+        this.street = street;
         this.housenumber = housenumber;
         this.postalcode = postalcode;
         this.provincie = provincie;
@@ -121,11 +122,11 @@ public class User {
     }
 
     public String getStreetname() {
-        return streetname;
+        return street;
     }
 
     public void setStreetname(String streetname) {
-        this.streetname = streetname;
+        this.street = streetname;
     }
 
     public String getHousenumber() {
