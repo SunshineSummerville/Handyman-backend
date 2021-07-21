@@ -45,28 +45,4 @@ public class ReservationRequest {
         this.reservationDate = reservationDate;
     }
 
-//    public User getHandyman() {
-//        return handyman;
-//    }
-//
-//    public void setHandyman(User handyman) {
-//        this.handyman = handyman;
-//    }
-
-    public String getCustomer() {
-        return customer;
-    }
-
-    public void setCustomer(String customer) {
-        this.customer = customer;
-    } // nu staat er een String waardoor de customer handmatig aan de reservering moet worden toegevoegd. uiteindelijk is het de bedoeling dat de "customer" automatisch wordt toegevoegd.
-
-//    public JobCategory getJobCategory() {
-//        return jobCategory;
-//    }
-//
-//    public void setJobCategory(JobCategory jobCategory) {
-//        this.jobCategory = jobCategory;
-//    }
-//
 }

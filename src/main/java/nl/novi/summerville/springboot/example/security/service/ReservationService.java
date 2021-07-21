@@ -10,16 +10,21 @@ import nl.novi.summerville.springboot.example.security.repository.CategoryReposi
 import nl.novi.summerville.springboot.example.security.repository.ReservationRepository;
 import nl.novi.summerville.springboot.example.security.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.authentication.AnonymousAuthenticationToken;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Service;
 
 import java.security.Principal;
 import java.util.List;
 import java.util.Optional;
 
-//@Autowired
 @Service
 public class ReservationService  {
 
+    @Autowired
+    public CategoryRepository categoryRepository;
 
     @Autowired
     public ReservationRepository reservationRepository;

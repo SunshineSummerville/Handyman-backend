@@ -22,6 +22,9 @@ public class ReservationController {
     private ReservationRepository reservationRepository;
 
     @Autowired
+    private ReservationService reservationService;
+
+    @Autowired
     public UserRepository userRepository;
 
     @GetMapping(value = "/api/reservation")
@@ -45,6 +48,12 @@ public class ReservationController {
     @DeleteMapping(value = "/api/reservation/{id}")
     public void deleteReservation(@PathVariable Long id) {
         reservationRepository.deleteByReservationNr(id);
+    }
+
+    @PostMapping(value = "/api/customer/reservation")
+    @PreAuthorize("hasRole('USER')")
+    public Reservation addReservationToHandyman(@RequestBody ReservationRequest reservationRequest) {
+        return reservationService.saveCustomerReservation(reservationRequest);
     }
 
     @PostMapping(value = "/api/reservation/{userid}")

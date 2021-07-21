@@ -37,14 +37,7 @@ public class Reservation {
 
 
     @ManyToOne
-    private Category Category;
-
-    @ManyToMany
-    @JoinTable (name = "reservation_category",
-    joinColumns = @JoinColumn(name = "reservationNr"),
-    inverseJoinColumns = @JoinColumn(name = "category_id"))
-    private Set<Category> categories;
-
+    private Category category;
 
     public Reservation() { // lege constructor
 
@@ -91,13 +84,13 @@ public class Reservation {
     public void setCustomer(User customer) {
         this.customer = customer;
     }
-//
-//    public JobCategory getJobCategory() {
-//        return jobCategory;
-//    }
-//
-//    public void setJobCategory(JobCategory jobCategory) {
-//        this.jobCategory = jobCategory;
-//    }
+
+        public void setCategory(Category category) {
+        this.category = category;
+        }
+
+        public Category getCategory() {
+        return category;
+        }
 
 }
