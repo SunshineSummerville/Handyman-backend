@@ -100,7 +100,7 @@ public class AuthorizationService {
                 signUpRequest.getLastname(),
                 signUpRequest.getEmail(),
                 signUpRequest.getPhonenumber(),
-                signUpRequest.getStreetname(),
+                signUpRequest.getStreet(),
                 signUpRequest.getHousenumber(),
                 signUpRequest.getPostalcode(),
                 signUpRequest.getProvincie(),

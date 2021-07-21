@@ -37,26 +37,55 @@ public class ReservationService  {
         return allReservations;
     }
 
-    public Reservation saveReservation(ReservationRequest reservationRequest, Principal principal) {
-        // principal.getName() == 'handyman'
-        User handyman = userRepository.findByUsername(principal.getName())
-                .orElseThrow(() -> new UserNotFoundException("Handyman Not Found: " + principal.getName()));
+    public Reservation saveCustomerReservation(ReservationRequest reservationRequest) {
 
-        User customer = userRepository.findByUsername(reservationRequest.getCustomer())
-                .orElseThrow(() -> new UserNotFoundException("Customer Not Found: " + reservationRequest.getCustomer()));
+        String username = "";
 
+        // Haal gegevens ingelogde gebruiker op
+        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+        if (!(authentication instanceof AnonymousAuthenticationToken)) {
+            UserDetails userPrincipal = (UserDetails)authentication.getPrincipal();
+            username = userPrincipal.getUsername();
+        }
 
-        // /api/reservaction
-        // Controller > Request (2 paramaters uit postman) + authorization token
-        // Service > vertaalt de request naar een custom reservation
-        // principal: daarmee haal je huidige ingelogde gebruiker op
+        User handyman = userRepository.findById(reservationRequest.getHandymanId()).orElseThrow( () ->
+                new UserNotFoundException("Handyman Not Found"));
 
-        return reservationRepository.save(new Reservation(
-                reservationRequest.getReservationDate(),
-                handyman,
-                customer
-        ));
+        User customer = userRepository.findByUsername(username).orElseThrow( () ->
+                new UserNotFoundException("Customer Not Found"));
+
+        Category category = categoryRepository.findById(reservationRequest.getCategoryName()).orElseThrow( () ->
+                new UserNotFoundException("Category Not Found"));
+
+        Reservation reservation = new Reservation();
+        reservation.setCustomer(customer);
+        reservation.setHandyman(handyman);
+        reservation.setReservationDate(reservationRequest.getReservationDate());
+        reservation.setCategory(category);
+
+        return reservationRepository.save(reservation);
     }
+
+//    public Reservation saveReservation(ReservationRequest reservationRequest, Principal principal) {
+//        // principal.getName() == 'handyman'
+//        User handyman = userRepository.findByUsername(principal.getName())
+//                .orElseThrow(() -> new UserNotFoundException("Handyman Not Found: " + principal.getName()));
+//
+//        //User customer = userRepository.findByUsername(reservationRequest.getCustomer())
+//        //        .orElseThrow(() -> new UserNotFoundException("Customer Not Found: " + reservationRequest.getCustomer()));
+//
+//
+//        // /api/reservaction
+//        // Controller > Request (2 paramaters uit postman) + authorization token
+//        // Service > vertaalt de request naar een custom reservation
+//        // principal: daarmee haal je huidige ingelogde gebruiker op
+//
+//        return reservationRepository.save(new Reservation(
+//                reservationRequest.getReservationDate(),
+//                handyman,
+//                customer
+//        ));
+//    }
 
 
 

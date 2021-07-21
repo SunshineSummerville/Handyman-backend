@@ -121,12 +121,12 @@ public class User {
         this.phonenumber = phonenumber;
     }
 
-    public String getStreetname() {
+    public String getStreet() {
         return street;
     }
 
-    public void setStreetname(String streetname) {
-        this.street = streetname;
+    public void setStreet(String street) {
+        this.street = street;
     }
 
     public String getHousenumber() {

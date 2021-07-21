@@ -21,7 +21,7 @@ public class SignupRequest {
     private String email;
     @Size(min = 3, max = 10)
     private String phonenumber;
-    private String streetname;
+    private String street;
     private String housenumber;
     @NotBlank
     @Size(max = 6, message = "Postalcode should be 4 numbers and 2 letters")
@@ -74,12 +74,12 @@ public class SignupRequest {
         this.phonenumber = phonenumber;
     }
 
-    public String getStreetname() {
-        return streetname;
+    public String getStreet() {
+        return street;
     }
 
-    public void setStreetname(String streetname) {
-        this.streetname = streetname;
+    public void setStreet(String street) {
+        this.street = street;
     }
 
     public String getHousenumber() {
