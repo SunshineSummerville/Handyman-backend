@@ -8,12 +8,14 @@ import nl.novi.summerville.springboot.example.security.exception.UserNotFoundExc
 import nl.novi.summerville.springboot.example.security.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.web.bind.annotation.CrossOrigin;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 import java.util.Set;
 
+//@CrossOrigin
 @Service
 public class UserService {
 

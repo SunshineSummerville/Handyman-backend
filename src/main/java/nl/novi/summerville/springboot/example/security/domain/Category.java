@@ -13,7 +13,10 @@ public class Category {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO, generator = "native")
     @GenericGenerator(name = "native", strategy = "native")
-    private String categoryName;// = Primary Key
+    @Column(columnDefinition = "serial") //serial elke entry ophogen met 1 opvolgende
+    private long id;
+    @Column
+    private String name;// = Primary Key
     @Column(nullable = false)
     private String price; // start tarief - optioneel
     @Column(nullable = false)
@@ -31,12 +34,20 @@ public class Category {
 
     }
 
-    public String getCategoryName() {
-        return categoryName;
+    public String getName() {
+        return name;
     }
 
-    public void setCategoryName(String categoryName) {
-        this.categoryName = categoryName;
+    public void setName(String categoryName) {
+        this.name = categoryName;
+    }
+
+    public long getId() {
+        return id;
+    }
+
+    public void setId(long id) {
+        this.id = id;
     }
 
     public String getPrice() {

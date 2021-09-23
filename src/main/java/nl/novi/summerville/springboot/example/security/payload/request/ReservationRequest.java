@@ -46,3 +46,5 @@ public class ReservationRequest {
     }
 
 }
+
+//test ff kijken of het wordt meegestuurd

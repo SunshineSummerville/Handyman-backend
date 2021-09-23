@@ -1,5 +1,6 @@
 package nl.novi.summerville.springboot.example.security.domain;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import org.hibernate.annotations.GenericGenerator;
 
 import javax.persistence.*;
@@ -23,6 +24,7 @@ public class User {
     private long id;
     private String username;
     @Column(nullable = false)
+    @JsonIgnore
     private String password;
     @Column(nullable = false)// kolom mag niet leeg zijn
     private String firstname;

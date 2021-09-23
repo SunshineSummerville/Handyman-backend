@@ -14,20 +14,20 @@ public class TestReservationController {
     @Autowired
     ReservationController reservationController;
 
-    @Test
-    void createReservation(){
-        Reservation reservation = new Reservation();
-        SimpleDateFormat formatter= new SimpleDateFormat("dd-mm-yyyy");
-        reservation.setReservationDate(formatter.format(new Date()));
-        //reservation.setCategoryName("categorie dienst");//TODO
-        //reservationRequest.getHandymanId();
-
-        reservationController.saveReservation(reservation);
-
-
-
-
-
-
-    }
+//    @Test
+//    void createReservation(){
+//        Reservation reservation = new Reservation();
+//        SimpleDateFormat formatter= new SimpleDateFormat("dd-mm-yyyy");
+//        reservation.setReservationDate(formatter.format(new Date()));
+//        //reservation.setCategoryName("categorie dienst");//TODO
+//        //reservationRequest.getHandymanId();
+//
+//        reservationController.saveReservation(reservation);
+//
+//
+//
+//
+//
+//
+//    }
 }
