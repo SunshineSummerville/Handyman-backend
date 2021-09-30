@@ -56,6 +56,14 @@ public class UserController {
         return userService.addReservationToUser(id, newReservation);
     }
 
+    @GetMapping (value = "/user/{id}/reservations")
+    public List<Reservation> getReservationsByUserId(@PathVariable long id) {
+        return userService.getReservationsByUserId(id);
+
+    }
+
+
+
 
 
     //    @DeleteMapping (value = "/api/appuser/{id}")

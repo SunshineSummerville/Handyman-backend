@@ -5,6 +5,7 @@ import nl.novi.summerville.springboot.example.security.domain.Reservation;
 import nl.novi.summerville.springboot.example.security.domain.Role;
 import nl.novi.summerville.springboot.example.security.domain.User;
 import nl.novi.summerville.springboot.example.security.exception.UserNotFoundException;
+import nl.novi.summerville.springboot.example.security.repository.ReservationRepository;
 import nl.novi.summerville.springboot.example.security.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -21,6 +22,9 @@ public class UserService {
 
     @Autowired
     public UserRepository userRepository;
+
+    @Autowired
+    public ReservationRepository reservationRepository;
 
     public List<User> findHandymanByPostalcode(String postalcode) {
         List<User> handyMen = new ArrayList<>();
@@ -107,9 +111,16 @@ public class UserService {
     }
 
 
+    public List<Reservation> getReservationsByUserId (long id) {
+        List<Reservation> myReservations = reservationRepository.findByCustomerId(id);
+
+        return myReservations;
+    }
 
 
-//
+
+
+
 
 
 
