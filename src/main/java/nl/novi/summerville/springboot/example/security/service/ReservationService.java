@@ -62,7 +62,7 @@ public class ReservationService  {
         User customer = userRepository.findByUsername(username).orElseThrow( () ->
                 new UserNotFoundException("Customer Not Found"));
 
-        Category category = categoryRepository.findById(reservationRequest.getCategoryName()).orElseThrow( () ->
+        Category category = categoryRepository.findById(reservationRequest.getCategoryId()).orElseThrow( () ->
                 new UserNotFoundException("Category Not Found"));
 
         Reservation reservation = new Reservation();
@@ -107,7 +107,7 @@ public class ReservationService  {
         Optional<Reservation> reservation = reservationRepository.findById(reservatonNr);
         if (reservation.isPresent()) {
             reservationRepository.deleteById(reservatonNr);
-            return "Reservation " + reservation.get().getReservationNr() + " is verwijderd";
+            return "Reservation " + reservation.get().getId() + " is verwijderd";
         }
         throw new ReservationNotFoundException( "Reservering bestaat niet.");
     }

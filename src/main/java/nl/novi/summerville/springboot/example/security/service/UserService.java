@@ -48,8 +48,8 @@ public class UserService {
         return allUsers;
     }
 
-    public User getUserById (Long id) {
-        Optional<User> user = userRepository.findById(id);
+    public User getUserByUsername (String username) {
+        Optional<User> user = userRepository.findByUsername(username);
         if(user.isPresent()) {
             return user.get();
         }

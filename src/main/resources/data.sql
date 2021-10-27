@@ -113,3 +113,14 @@ insert into category_handymen (category_id, handymen_id) values (7,8);
 insert into category_handymen (category_id, handymen_id) values (8,8);
 insert into category_handymen (category_id, handymen_id) values (9,10);
 insert into category_handymen (category_id, handymen_id) values (10,10);
+
+insert into category_handymen (category_id, handymen_id) values (1,4);
+insert into category_handymen (category_id, handymen_id) values (2,4);
+insert into category_handymen (category_id, handymen_id) values (3,6);
+insert into category_handymen (category_id, handymen_id) values (4,6);
+insert into category_handymen (category_id, handymen_id) values (5,8);
+insert into category_handymen (category_id, handymen_id) values (6,8);
+insert into category_handymen (category_id, handymen_id) values (7,10);
+insert into category_handymen (category_id, handymen_id) values (8,10);
+insert into category_handymen (category_id, handymen_id) values (9,12);
+insert into category_handymen (category_id, handymen_id) values (10,12);

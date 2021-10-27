@@ -1,5 +1,6 @@
 package nl.novi.summerville.springboot.example.security.domain;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import org.hibernate.annotations.GenericGenerator;
 
@@ -12,15 +13,16 @@ import java.util.Set;
 public class User {
 
     @Id
-    @GeneratedValue(
-            strategy= GenerationType.AUTO,
-            generator="native"
-    )
-    @GenericGenerator(
-            name = "native",
-            strategy = "native"
-    )
-    @Column(columnDefinition = "serial") //serial elke entry ophogen met 1 opvolgende
+//    @GeneratedValue(
+//            strategy= GenerationType.AUTO,
+//            generator="native"
+//    )
+//    @GenericGenerator(
+//            name = "native",
+//            strategy = "native"
+//    )
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+//    @Column(columnDefinition = "serial") //serial elke entry ophogen met 1 opvolgende
     private long id;
     private String username;
     @Column(nullable = false)
@@ -45,8 +47,11 @@ public class User {
 
 
 
+    @JsonIgnore
     @OneToMany(mappedBy = "handyman")
     private List<Reservation> reservations;
+
+    @JsonIgnore
 
     @OneToMany(mappedBy = "customer")
     private List<Reservation> currentReservations;
@@ -56,6 +61,13 @@ public class User {
     joinColumns = @JoinColumn(name = "user_id"),
     inverseJoinColumns = @JoinColumn(name = "role_id"))
     private Set<Role> roles;
+
+    @JsonBackReference
+    @ManyToMany
+    @JoinTable (name ="category_handymen",
+    joinColumns  = @JoinColumn(name = "handymen_id"),
+    inverseJoinColumns = @JoinColumn(name = "category_id"))
+    private Set<Category> categories;
 
     public User() {
 

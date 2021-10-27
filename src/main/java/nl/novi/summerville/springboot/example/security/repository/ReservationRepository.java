@@ -10,10 +10,10 @@ import java.util.Optional;
 
 public interface ReservationRepository extends JpaRepository<Reservation, Long> {
 
-    void deleteByReservationNr(Long aLong);
+    void deleteById(Long aLong);
 //    Reservation addReservationToUserById(Long userid, ReservationRequest reservationRequest);
 //    Optional<Reservation> findByReservation(Long reservationNr);
-////    <Reservation> findAllReservations(Long reservationNr);
+      List<Reservation> findAll();
 //    Boolean existsByReservationNr(String reservationNr);
 
     List<Reservation> findByCustomerId(long id);

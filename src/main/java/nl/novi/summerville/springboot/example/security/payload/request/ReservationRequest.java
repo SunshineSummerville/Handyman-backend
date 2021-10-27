@@ -16,7 +16,11 @@ public class ReservationRequest {
 
     private long handymanId;
 
-    private String categoryName;
+    private long customerId;
+
+    private long categoryId;
+
+//    private String categoryName;
 
     public ReservationRequest() {}
 
@@ -28,15 +32,15 @@ public class ReservationRequest {
         return handymanId;
     }
 
-    public void setCategoryName(String categoryName) {
-        this.categoryName = categoryName;
-    }
+//    public void setCategoryName(String categoryName) {
+//        this.categoryName = categoryName;
+//    }
+//
+//    public String getCategoryName() {
+//        return categoryName;
+//    }
 
-    public String getCategoryName() {
-        return categoryName;
-    }
-
-    @JsonProperty ("reservationdate")
+    @JsonProperty ("reservationDate")
     public String getReservationDate() {
         return reservationDate;
     }
@@ -45,6 +49,21 @@ public class ReservationRequest {
         this.reservationDate = reservationDate;
     }
 
+    public long getCustomerId() {
+        return customerId;
+    }
+
+    public void setCustomerId(long customerId) {
+        this.customerId = customerId;
+    }
+
+    public long getCategoryId() {
+        return categoryId;
+    }
+
+    public void setCategoryId(long categoryId) {
+        this.categoryId = categoryId;
+    }
 }
 
 //test ff kijken of het wordt meegestuurd

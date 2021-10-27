@@ -30,10 +30,12 @@ public class UserController {
         return userService.getAllUsers();
     }
 
-    @GetMapping (value = "/user/{id}")
-    public User getUserById(@PathVariable Long userId) {
-        return userService.getUserById(userId);
+    @GetMapping (value = "/user/{username}")
+    public User getUserByUsername(@PathVariable String username) {
+
+        return userService.getUserByUsername(username);
     }
+
 
 
     @PostMapping(value = "/user")

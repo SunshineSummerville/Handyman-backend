@@ -1,6 +1,8 @@
 package nl.novi.summerville.springboot.example.security.domain;
 
+import com.fasterxml.jackson.annotation.JsonIdentityInfo;
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 import org.hibernate.annotations.GenericGenerator;
 
 import javax.persistence.*;
@@ -12,20 +14,17 @@ public class Reservation {
 
     @Id
     @GeneratedValue(
-            strategy = GenerationType.AUTO,
-            generator ="native"
+            strategy = GenerationType.IDENTITY
+
     )
-    @GenericGenerator(
-            name = "native",
-            strategy = "native"
-    )
+
     @Column(columnDefinition = "serial")
-    private long reservationNr; // reservationNr = primary key
+    private long id; // reservationNr = primary key
     @Column(nullable = false)
     private String reservationDate;
 
     @ManyToOne
-    @JsonIgnore
+//    @JsonIgnore
     private User handyman;
 
     @ManyToOne
@@ -36,7 +35,9 @@ public class Reservation {
     private User customer;
 
 
+
     @ManyToOne
+//    @JsonIdentityInfo(generator= ObjectIdGenerators.PropertyGenerator.class, property="category")
     private Category category;
 
     public Reservation() { // lege constructor
@@ -47,18 +48,28 @@ public class Reservation {
         this.reservationDate = reservationDate;
     }
 
-    public Reservation(String reservationDate, User handyman, User customer) {
+    public Reservation(String reservationDate, User handyman, User customer,Category category) {
         this.reservationDate = reservationDate;
         this.handyman = handyman;
         this.customer = customer;
+        this.category = category;
     }
 
-    public long getReservationNr() {
-        return reservationNr;
+//    public long getReservationNr() {
+//        return reservationNr;
+//    }
+//
+//    public void setReservationNr(long reservationNr) {
+//        this.reservationNr = reservationNr;
+//    }
+
+
+    public long getId() {
+        return id;
     }
 
-    public void setReservationNr(long reservationNr) {
-        this.reservationNr = reservationNr;
+    public void setId(long id) {
+        this.id = id;
     }
 
     public String getReservationDate() {
