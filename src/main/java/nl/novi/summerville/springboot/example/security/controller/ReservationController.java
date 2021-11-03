@@ -41,8 +41,9 @@ public class ReservationController {
         List<Reservation> ReservationList = reservationRepository.findAll();
         return ReservationList;
     }
+//    http://localhost:8080/api/reservation/24
 
-    @GetMapping(value = "/api/Reservation/{id}")
+    @GetMapping(value = "/api/reservation/{id}")
     public Reservation getReservation(@PathVariable Long id) {
         return reservationRepository.findById(id).orElseThrow(
                 () -> new ReservationNotFoundException(id));
@@ -58,11 +59,12 @@ public class ReservationController {
         long categoryId = reservationRequest.getCategoryId();
         Optional <Category> category = categoryRepository.findById(categoryId);
         String date = reservationRequest.getReservationDate();
+        String image = reservationRequest.getImage();
         if (handyman.isPresent()&& customer.isPresent()&& category.isPresent()){
-            Reservation newReservation = new Reservation(date,handyman.get(),customer.get(), category.get());
+            Reservation newReservation = new Reservation(date,handyman.get(),customer.get(), category.get(), image);
             reservationRepository.save(newReservation);
 
-            return ResponseEntity.status(HttpStatus.CREATED).body( new ReservationResponse(newReservation.getId(),newReservation.getReservationDate(), newReservation.getCustomer(), newReservation.getHandyman(), newReservation.getCategory()));
+            return ResponseEntity.status(HttpStatus.CREATED).body( new ReservationResponse(newReservation.getId(),newReservation.getReservationDate(), newReservation.getCustomer(), newReservation.getHandyman(), newReservation.getCategory(), newReservation.getImage()));
         }
 
 //        return "Something went wrong";

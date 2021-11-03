@@ -12,13 +12,15 @@ public class ReservationResponse {
     private User customer;
     private User handyman;
     private Category category;
+    private String image;
 
-    public ReservationResponse(long id, String reservationDate, User customer, User handyman, Category category) {
+    public ReservationResponse(long id, String reservationDate, User customer, User handyman, Category category, String image) {
         this.id = id;
         this.reservationDate = reservationDate;
         this.customer = customer;
         this.handyman = handyman;
         this.category = category;
+        this.image = image;
     }
 
     public ReservationResponse(){
@@ -63,5 +65,13 @@ public class ReservationResponse {
 
     public void setCategory(Category category) {
         this.category = category;
+    }
+
+    public String getImage() {
+        return image;
+    }
+
+    public void setImage(String image) {
+        this.image = image;
     }
 }

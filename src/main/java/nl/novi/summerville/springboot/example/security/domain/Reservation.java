@@ -40,6 +40,9 @@ public class Reservation {
 //    @JsonIdentityInfo(generator= ObjectIdGenerators.PropertyGenerator.class, property="category")
     private Category category;
 
+    @Column(columnDefinition="TEXT")
+    private String image;
+
     public Reservation() { // lege constructor
 
     }
@@ -48,11 +51,12 @@ public class Reservation {
         this.reservationDate = reservationDate;
     }
 
-    public Reservation(String reservationDate, User handyman, User customer,Category category) {
+    public Reservation(String reservationDate, User handyman, User customer,Category category,String image) {
         this.reservationDate = reservationDate;
         this.handyman = handyman;
         this.customer = customer;
         this.category = category;
+        this.image = image;
     }
 
 //    public long getReservationNr() {
@@ -104,4 +108,11 @@ public class Reservation {
         return category;
         }
 
+    public String getImage() {
+        return image;
+    }
+
+    public void setImage(String image) {
+        this.image = image;
+    }
 }

@@ -20,6 +20,8 @@ public class ReservationRequest {
 
     private long categoryId;
 
+    private String image;
+
 //    private String categoryName;
 
     public ReservationRequest() {}
@@ -63,6 +65,14 @@ public class ReservationRequest {
 
     public void setCategoryId(long categoryId) {
         this.categoryId = categoryId;
+    }
+
+    public String getImage() {
+        return image;
+    }
+
+    public void setImage(String image) {
+        this.image = image;
     }
 }
 
