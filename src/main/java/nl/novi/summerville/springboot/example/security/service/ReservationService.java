@@ -5,6 +5,7 @@ import nl.novi.summerville.springboot.example.security.domain.Reservation;
 import nl.novi.summerville.springboot.example.security.domain.User;
 import nl.novi.summerville.springboot.example.security.exception.ReservationNotFoundException;
 import nl.novi.summerville.springboot.example.security.exception.UserNotFoundException;
+import nl.novi.summerville.springboot.example.security.payload.request.ModifyReservationRequest;
 import nl.novi.summerville.springboot.example.security.payload.request.ReservationRequest;
 import nl.novi.summerville.springboot.example.security.repository.CategoryRepository;
 import nl.novi.summerville.springboot.example.security.repository.ReservationRepository;
@@ -74,6 +75,53 @@ public class ReservationService  {
         return reservationRepository.save(reservation);
     }
 
+
+
+    //@Override
+    public String deleteReservationByNr (Long reservatonNr) {
+        Optional<Reservation> reservation = reservationRepository.findById(reservatonNr);
+        if (reservation.isPresent()) {
+            reservationRepository.deleteById(reservatonNr);
+            return "Reservation " + reservation.get().getId() + " is verwijderd";
+        }
+        throw new ReservationNotFoundException( "Reservering bestaat niet.");
+    }
+
+    //@Override
+    public Reservation updateReservationByNr(Long id, Reservation updatedReservation) {
+        Optional<Reservation> reservationFromDb = reservationRepository.findById(id);
+
+        if(reservationFromDb.isPresent()) { // check of reservering aanwezig is adhv nr
+            Reservation oldReservation = reservationFromDb.get();
+            oldReservation.setReservationDate(updatedReservation.getReservationDate());
+            oldReservation.setCustomer(updatedReservation.getCustomer());
+
+            return reservationRepository.save(oldReservation);
+        }
+        throw new ReservationNotFoundException(id);
+    }
+
+    //service method ?
+
+    public Reservation modifyReservationsById(Long id, ModifyReservationRequest modifyReservationRequest) {
+        Optional<Reservation> reservationFromDb = reservationRepository.findById(id);
+        Reservation oldReservation = reservationFromDb.get();
+        oldReservation.setReservationDate(modifyReservationRequest.getReservationDate());
+
+
+        return reservationRepository.save(oldReservation);
+
+
+    }
+
+
+
+
+
+
+
+
+
 //    public Reservation saveReservation(ReservationRequest reservationRequest, Principal principal) {
 //        // principal.getName() == 'handyman'
 //        User handyman = userRepository.findByUsername(principal.getName())
@@ -101,33 +149,5 @@ public class ReservationService  {
 //    public Reservation addResevation (Reservation newResevation) {
 //        return reservationRepository.save(newResevation);
 //    }
-
-    //@Override
-    public String deleteReservationByNr (Long reservatonNr) {
-        Optional<Reservation> reservation = reservationRepository.findById(reservatonNr);
-        if (reservation.isPresent()) {
-            reservationRepository.deleteById(reservatonNr);
-            return "Reservation " + reservation.get().getId() + " is verwijderd";
-        }
-        throw new ReservationNotFoundException( "Reservering bestaat niet.");
-    }
-
-    //@Override
-    public Reservation updateReservationByNr(Long id, Reservation updatedReservation) {
-        Optional<Reservation> reservationFromDb = reservationRepository.findById(id);
-
-        if(reservationFromDb.isPresent()) { // check of reservering aanwezig is adhv nr
-            Reservation oldReservation = reservationFromDb.get();
-            oldReservation.setReservationDate(updatedReservation.getReservationDate());
-            oldReservation.setCustomer(updatedReservation.getCustomer());
-
-            return reservationRepository.save(oldReservation);
-        }
-        throw new ReservationNotFoundException(id);
-    }
-
-
-
-
 
 }

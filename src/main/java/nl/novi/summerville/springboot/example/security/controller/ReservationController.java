@@ -5,6 +5,7 @@ import nl.novi.summerville.springboot.example.security.domain.Category;
 import nl.novi.summerville.springboot.example.security.domain.Reservation;
 import nl.novi.summerville.springboot.example.security.domain.User;
 import nl.novi.summerville.springboot.example.security.exception.ReservationNotFoundException;
+import nl.novi.summerville.springboot.example.security.payload.request.ModifyReservationRequest;
 import nl.novi.summerville.springboot.example.security.payload.request.ReservationRequest;
 import nl.novi.summerville.springboot.example.security.payload.response.ReservationResponse;
 import nl.novi.summerville.springboot.example.security.repository.CategoryRepository;
@@ -41,7 +42,6 @@ public class ReservationController {
         List<Reservation> ReservationList = reservationRepository.findAll();
         return ReservationList;
     }
-//    http://localhost:8080/api/reservation/24
 
     @GetMapping(value = "/api/reservation/{id}")
     public Reservation getReservation(@PathVariable Long id) {
@@ -67,8 +67,6 @@ public class ReservationController {
             return ResponseEntity.status(HttpStatus.CREATED).body( new ReservationResponse(newReservation.getId(),newReservation.getReservationDate(), newReservation.getCustomer(), newReservation.getHandyman(), newReservation.getCategory(), newReservation.getImage()));
         }
 
-//        return "Something went wrong";
-//        return reservationRepository.save (newReservation);
         return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(new ReservationResponse());
     }
 
@@ -101,6 +99,16 @@ public class ReservationController {
         }
         return reservationRepository.save(reservation);
 
+
+    }
+
+
+
+    @PatchMapping(value = "/api/reservation/{id}")
+    public ResponseEntity<Reservation> modifyReservationsById  (@PathVariable long id, @RequestBody ModifyReservationRequest modifyReservationRequest) {
+        Reservation updatedReservation = reservationService.modifyReservationsById(id,modifyReservationRequest);
+
+        return ResponseEntity.status(HttpStatus.OK).body(updatedReservation);
 
     }
 

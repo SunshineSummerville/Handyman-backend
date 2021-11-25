@@ -2,9 +2,13 @@ package nl.novi.summerville.springboot.example.security.controller;
 
 import nl.novi.summerville.springboot.example.security.domain.Reservation;
 import nl.novi.summerville.springboot.example.security.domain.User;
+import nl.novi.summerville.springboot.example.security.payload.request.AddCategoryRequest;
 import nl.novi.summerville.springboot.example.security.repository.UserRepository;
 import nl.novi.summerville.springboot.example.security.service.UserService;
+import org.apache.coyote.Response;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -64,6 +68,17 @@ public class UserController {
 
     }
 
+    @PostMapping(value = "/user/{id}/categories")
+    public ResponseEntity<Long> addCategoryToHandyman (@PathVariable long id, @RequestBody AddCategoryRequest addCategoryRequest){
+        userService.addCategoryToUser(id,addCategoryRequest.getCategoryId());
+        return ResponseEntity.status(HttpStatus.CREATED).body(addCategoryRequest.getCategoryId());
+    }
+
+    @DeleteMapping(value = "/user/{id}/categories")
+    public ResponseEntity<Long> removeCategoryToHandyman (@PathVariable long id, @RequestBody AddCategoryRequest addCategoryRequest){
+        userService.removeCategoryFromUser(id,addCategoryRequest.getCategoryId());
+        return ResponseEntity.status(HttpStatus.OK).body(addCategoryRequest.getCategoryId());
+    }
 
 
 

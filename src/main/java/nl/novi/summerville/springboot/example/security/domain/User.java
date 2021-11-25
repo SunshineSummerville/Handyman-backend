@@ -198,4 +198,12 @@ public class User {
     public void setCurrentReservations(List<Reservation> currentReservations) {
         this.currentReservations = currentReservations;
     }
+
+    public Set<Category> getCategories() {
+        return categories;
+    }
+
+    public void setCategories(Set<Category> categories) {
+        this.categories = categories;
+    }
 }

@@ -60,7 +60,7 @@ insert into app_user (firstname, lastname, email, password, phonenumber, postalc
 insert into app_user (firstname, lastname, email, password, phonenumber, postalcode, provincie, street, username, housenumber) values ('Budd', 'Pannaman', 'bpannamanj@slate.com', '$2a$12$vzp7o52s1SR0wNj38YU6tu/k/r2nQKY2Ys3EJ08ZMjWY9pScFFy3W', '607 412 0814', '8549HJ', 'Groningen', 'Tomscot', 'bpannamanj', 47);
 
 
-insert into reservation (reservation_date, category_id, customer_id, handyman_id) values ('8/6/2021', 2, 1, 2);
+insert into reservation (reservation_date, category_id, customer_id, handyman_id) values ('2021-11-24', 2, 1, 2);
 insert into reservation (reservation_date, category_id, customer_id, handyman_id) values ('6/20/2021', 19, 3, 4);
 insert into reservation (reservation_date, category_id, customer_id, handyman_id) values ('6/3/2021', 11, 5, 6);
 insert into reservation (reservation_date, category_id, customer_id, handyman_id) values ('8/7/2021', 12, 7, 8);
