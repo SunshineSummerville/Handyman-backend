@@ -11,7 +11,7 @@ public class ReservationRequest {
     @NotBlank
     @FutureOrPresent(message = "reservation must not be in the past.")
     @JsonFormat(shape = JsonFormat.Shape.STRING,
-            pattern = "dd-mm-yyyy") //@JsonFormat is used to control the output format of the Date
+            pattern = "dd-mm-yyyy")
     private String reservationDate;
 
     private long handymanId;
@@ -22,25 +22,9 @@ public class ReservationRequest {
 
     private String image;
 
-//    private String categoryName;
 
     public ReservationRequest() {}
 
-    public void setHandymanId(long handymanId) {
-        this.handymanId = handymanId;
-    }
-
-    public long getHandymanId() {
-        return handymanId;
-    }
-
-//    public void setCategoryName(String categoryName) {
-//        this.categoryName = categoryName;
-//    }
-//
-//    public String getCategoryName() {
-//        return categoryName;
-//    }
 
     @JsonProperty ("reservationDate")
     public String getReservationDate() {
@@ -49,6 +33,14 @@ public class ReservationRequest {
 
     public void setReservationDate(String reservationDate) {
         this.reservationDate = reservationDate;
+    }
+
+    public long getHandymanId() {
+        return handymanId;
+    }
+
+    public void setHandymanId(long handymanId) {
+        this.handymanId = handymanId;
     }
 
     public long getCustomerId() {
@@ -75,5 +67,3 @@ public class ReservationRequest {
         this.image = image;
     }
 }
-
-//test ff kijken of het wordt meegestuurd

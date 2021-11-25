@@ -5,10 +5,11 @@ import nl.novi.summerville.springboot.example.security.domain.User;
 import nl.novi.summerville.springboot.example.security.payload.request.AddCategoryRequest;
 import nl.novi.summerville.springboot.example.security.repository.UserRepository;
 import nl.novi.summerville.springboot.example.security.service.UserService;
-import org.apache.coyote.Response;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -24,48 +25,11 @@ public class UserController {
     @Autowired
     public UserRepository userRepository;
 
-    @GetMapping("/handyman/{postalcode}")
-    public List<User> findHandymenByPostalCode(@PathVariable String postalcode) {
-        return userService.findHandymanByPostalcode(postalcode);
-    }
-
-    @GetMapping (value = "/user")
-    public List<User> getUsers() {
-        return userService.getAllUsers();
-    }
 
     @GetMapping (value = "/user/{username}")
     public User getUserByUsername(@PathVariable String username) {
 
         return userService.getUserByUsername(username);
-    }
-
-
-
-    @PostMapping(value = "/user")
-    public User saveUser (@RequestBody User newUser) {
-        return userService.saveUser(newUser);
-    }
-
-    @DeleteMapping(value = "/user/{id}")
-    public String deleteUser(@PathVariable long id) {
-        return userService.deleteUserById (id);
-    }
-
-    @PutMapping(value = "/user/{id}")
-    public User updateUserById(@PathVariable long id, @RequestBody User updatedUser) {
-        return userService.updateUserById(id, updatedUser);
-    }
-
-    @PutMapping("/user/{id}/reservation") // add made reservation: reservation is made by handyman which will be assigned to a appuser in the database
-    public User addReservationToUser(@PathVariable long id, @RequestBody Reservation newReservation) {
-        return userService.addReservationToUser(id, newReservation);
-    }
-
-    @GetMapping (value = "/user/{id}/reservations")
-    public List<Reservation> getReservationsByUserId(@PathVariable long id) {
-        return userService.getReservationsByUserId(id);
-
     }
 
     @PostMapping(value = "/user/{id}/categories")
@@ -80,45 +44,23 @@ public class UserController {
         return ResponseEntity.status(HttpStatus.OK).body(addCategoryRequest.getCategoryId());
     }
 
+    @GetMapping (value = "/user/{id}/reservations")
+    public List<Reservation> getReservationsByUserId(@PathVariable long id) {
+        Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+        if (auth != null && auth.getAuthorities().stream().anyMatch(a -> a.getAuthority().equals("ROLE_HANDYMAN"))) {
+            System.out.println("HANDYMAN");
+            return userService.getReservationsByHandymanId(id);
 
+        }else{
+            return userService.getReservationsByCustomerId(id);
 
+        }
 
-    //    @DeleteMapping (value = "/api/appuser/{id}")
-//    public void deleteAppUser (@PathVariable Long id){
-//        Optional<ApplicationUser> appUser = appUserRepository.findById(id);
-//        if(appUser.isPresent()) {
-//            appUserRepository.deleteById(id);
-//            return "User met id " + appUser.get().getUserId () + " is verwijderd";
-//        }
-//        throw new UserNotFoundException("Hallo, ik besta niet");
-//
-//    }
-//
-//    @PutMapping(value = "/api/user/{id}")
-//    public ApplicationUser updateUserById(@PathVariable long id, @RequestBody ApplicationUser updatedUser) {
-//        return applicationUserRepository.findById(id).map(
-//                user -> {
-//                    user.setName(updatedUser.getName());
-//                    user.setEmail(updatedUser.getEmail());
-//                    return applicationUserRepository.save(user);
-//                })
-//                // Kan de user niet vinden in database
-//                .orElseGet(() -> {
-//                    updatedUser.setId(id);
-//                    return applicationUserRepository.save(updatedUser);
-//                });
-//    }
-//
+    }
 
-
-
-//    @PostMapping("/api/user/fill")
-//    public User addTestUsers() {
-//        return userService.addTestUserWithReservations();
-//    }
-//
-
-
-
+    @GetMapping("/handyman/{postalcode}") //@TODO needed for searchbar
+    public List<User> findHandymenByPostalCode(@PathVariable String postalcode) {
+        return userService.findHandymanByPostalcode(postalcode);
+    }
 
 }

@@ -7,7 +7,7 @@ import java.util.Set;
 
 public class SignupRequest {
 
-    @NotBlank //can be applied only to text values and validates that the property is not null or whitespace.
+    @NotBlank
     @Size(min = 3, max = 20)
     private String username;
     @Size(min = 2, message = "firstname should contain at least 2 letters.")
@@ -17,14 +17,14 @@ public class SignupRequest {
 
     @NotBlank
     @Size(max = 50)
-    @Email(message = "Please, write a correct email. ") //Validates that the given email is a valid email address.
+    @Email(message = "Please, write a correct email. ")
     private String email;
     @Size(min = 3, max = 10)
     private String phonenumber;
     private String street;
     private String housenumber;
     @NotBlank
-    @Size(max = 6, message = "Postalcode should be 4 numbers and 2 letters")
+    @Size(max = 7, message = "Postalcode should be 4 numbers and 2 letters")
     private String postalcode;
     private String provincie;
 
@@ -33,6 +33,7 @@ public class SignupRequest {
     @NotBlank
     @Size(min = 6, max = 40)
     private String password;
+
 
     public String getUsername() {
         return username;

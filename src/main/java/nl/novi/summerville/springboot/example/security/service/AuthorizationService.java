@@ -11,7 +11,6 @@ import nl.novi.summerville.springboot.example.security.repository.ReservationRep
 import nl.novi.summerville.springboot.example.security.repository.RoleRepository;
 import nl.novi.summerville.springboot.example.security.repository.UserRepository;
 import nl.novi.summerville.springboot.example.security.service.security.jwt.JwtUtils;
-
 import nl.novi.summerville.springboot.example.security.service.security.jwt.AuthEntryPointJwt;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -22,12 +21,12 @@ import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.validation.annotation.Validated;
-
 import javax.validation.Valid;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 import java.util.stream.Collectors;
+
 
 @Service
 @Validated
@@ -176,25 +175,5 @@ public class AuthorizationService {
                 roles));
     }
 
-//    public ResponseEntity<MessageResponse> saveReservation(@Valid ReservationRequest reservationRequest) {
-//        if (Boolean.TRUE.equals(reservationRepository.existsByReservationNr(reservationRequest.getReservationNr()))) {
-//            return ResponseEntity
-//                    .badRequest()
-//                    .body(new MessageResponse("Error: Reservation is already taken!"));
-//        }
-//
-//        // Create new reservation
-//        Reservation reservation = new Reservation(reservationRequest.getReservationNr(),
-//                reservationRequest.getReservationDate(),
-//                reservationRequest.getCustomer(),
-//                reservationRequest.getHandyman();
-//
-//                //encoder.encode(reservationRequest.));
-//
-//
-//        reservationRepository.save(reservation);
-//
-//        return ResponseEntity.ok(new MessageResponse("User registered successfully!"));
-//    }
 
 }

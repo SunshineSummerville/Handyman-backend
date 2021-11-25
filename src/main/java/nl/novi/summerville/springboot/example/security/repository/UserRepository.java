@@ -20,7 +20,5 @@ public interface UserRepository extends JpaRepository<User, Long> {
     List<User> findByPostalcode(String postalcode);
     Optional<User> findById(long id);
 
-//    List<User> findUsersByCategoryId(long categoryId);
-//    List<User> findUsersByCategoryHandymenCategoryId(long categoryId);
 
 }

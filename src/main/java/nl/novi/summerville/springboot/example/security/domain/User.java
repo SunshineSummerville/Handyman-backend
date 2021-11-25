@@ -2,33 +2,23 @@ package nl.novi.summerville.springboot.example.security.domain;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonIgnore;
-import org.hibernate.annotations.GenericGenerator;
-
 import javax.persistence.*;
 import java.util.List;
 import java.util.Set;
+
 
 @Entity
 @Table(name = "app_user")
 public class User {
 
     @Id
-//    @GeneratedValue(
-//            strategy= GenerationType.AUTO,
-//            generator="native"
-//    )
-//    @GenericGenerator(
-//            name = "native",
-//            strategy = "native"
-//    )
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-//    @Column(columnDefinition = "serial") //serial elke entry ophogen met 1 opvolgende
     private long id;
     private String username;
     @Column(nullable = false)
     @JsonIgnore
     private String password;
-    @Column(nullable = false)// kolom mag niet leeg zijn
+    @Column(nullable = false)
     private String firstname;
     @Column(nullable = false)
     private String lastname;
@@ -46,13 +36,11 @@ public class User {
     private String provincie;
 
 
-
     @JsonIgnore
     @OneToMany(mappedBy = "handyman")
     private List<Reservation> reservations;
 
     @JsonIgnore
-
     @OneToMany(mappedBy = "customer")
     private List<Reservation> currentReservations;
 

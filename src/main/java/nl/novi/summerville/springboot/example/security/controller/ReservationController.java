@@ -1,6 +1,5 @@
 package nl.novi.summerville.springboot.example.security.controller;
 
-
 import nl.novi.summerville.springboot.example.security.domain.Category;
 import nl.novi.summerville.springboot.example.security.domain.Reservation;
 import nl.novi.summerville.springboot.example.security.domain.User;
@@ -15,11 +14,10 @@ import nl.novi.summerville.springboot.example.security.service.ReservationServic
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.List;
 import java.util.Optional;
+
 
 @CrossOrigin
 @RestController
@@ -37,11 +35,6 @@ public class ReservationController {
     @Autowired
     public CategoryRepository categoryRepository;
 
-    @GetMapping(value = "/api/reservation")
-    public List<Reservation> getReservations() {
-        List<Reservation> ReservationList = reservationRepository.findAll();
-        return ReservationList;
-    }
 
     @GetMapping(value = "/api/reservation/{id}")
     public Reservation getReservation(@PathVariable Long id) {
@@ -49,6 +42,13 @@ public class ReservationController {
                 () -> new ReservationNotFoundException(id));
     }
 
+    @PatchMapping(value = "/api/reservation/{id}")
+    public ResponseEntity<Reservation> modifyReservationsById  (@PathVariable long id, @RequestBody ModifyReservationRequest modifyReservationRequest) {
+        Reservation updatedReservation = reservationService.modifyReservationsById(id,modifyReservationRequest);
+
+        return ResponseEntity.status(HttpStatus.OK).body(updatedReservation);
+
+    }
 
     @PostMapping(value = "/api/reservation")
     public ResponseEntity<ReservationResponse> saveReservation(@RequestBody ReservationRequest reservationRequest) {
@@ -71,46 +71,9 @@ public class ReservationController {
     }
 
 
-    @DeleteMapping(value = "/api/reservation/{id}")
-    public void deleteReservation(@PathVariable Long id) {
-        reservationRepository.deleteById(id);
-    }
-
-    @PostMapping(value = "/api/customer/reservation")
-    @PreAuthorize("hasRole('USER')")
-    public Reservation addReservationToHandyman(@RequestBody ReservationRequest reservationRequest) {
-        return reservationService.saveCustomerReservation(reservationRequest);
-    }
-
-    @PostMapping(value = "/api/reservation/{userid}")
-    public Reservation addReservationToUserById(@PathVariable long userid,
-                                                @RequestBody ReservationRequest reservationRequest) {
-
-        Reservation reservation = new Reservation(
-                reservationRequest.getReservationDate()
-        );
-
-        Optional<User> user =
-                userRepository.findById(userid);
-        if(user.isPresent()) {
-            reservation.setCustomer(user.get());
-            reservation.setHandyman(user.get());
-            reservationRepository.save(reservation);
-        }
-        return reservationRepository.save(reservation);
-
-
-    }
 
 
 
-    @PatchMapping(value = "/api/reservation/{id}")
-    public ResponseEntity<Reservation> modifyReservationsById  (@PathVariable long id, @RequestBody ModifyReservationRequest modifyReservationRequest) {
-        Reservation updatedReservation = reservationService.modifyReservationsById(id,modifyReservationRequest);
-
-        return ResponseEntity.status(HttpStatus.OK).body(updatedReservation);
-
-    }
 
 
 }
