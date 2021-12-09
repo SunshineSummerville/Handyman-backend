@@ -83,22 +83,7 @@ public class UserService {
 
 
 
-    public List<User> findHandymanByPostalcode(String postalcode) {
-        List<User> handyMen = new ArrayList<>();
 
-        List<User> foundUsers = userRepository.findByPostalcode(postalcode);
-
-        for(User user : foundUsers) {
-            Set<Role> foundRoles = user.getRoles();
-            for(Role role : foundRoles) {
-                if(role.getName().equals(ERole.ROLE_HANDYMAN)) {
-                    handyMen.add(user);
-                }
-            }
-        }
-
-        return handyMen;
-    }
 
 
 

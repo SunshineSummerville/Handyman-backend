@@ -58,9 +58,5 @@ public class UserController {
 
     }
 
-    @GetMapping("/handyman/{postalcode}") //@TODO needed for searchbar
-    public List<User> findHandymenByPostalCode(@PathVariable String postalcode) {
-        return userService.findHandymanByPostalcode(postalcode);
-    }
 
 }
