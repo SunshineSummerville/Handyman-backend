@@ -11,6 +11,8 @@ import org.springframework.http.MediaType;
 import org.springframework.test.context.TestPropertySource;
 import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.test.web.servlet.MockMvc;
+
+import static org.hamcrest.Matchers.equalTo;
 import static org.hamcrest.Matchers.hasSize;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.*;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
@@ -41,6 +43,34 @@ public class TestReservationController {
                 .andExpect(status().isOk())
                 .andExpect(content().contentTypeCompatibleWith(MediaType.APPLICATION_JSON))
                 .andExpect(jsonPath("$", hasSize(20)));
+
+
+    }
+
+    @Test
+    public void postSignup() throws Exception {
+        // arrange
+        String endpoint = "/api/auth/signup";
+        String body = "{\n" +
+                "    \"username\": \"handyman\",\n" +
+                "    \"password\" : \"123456\",\n" +
+                "    \"firstname\": \"handyman\",\n" +
+                "    \"lastname\": \"handyman\",\n" +
+                "    \"email\" : \"handyman@handyman.com\",\n" +
+                "    \"phonenumber\": \"0612345678\",\n" +
+                "    \"street\": \"handymanstreet\",\n" +
+                "    \"housenumber\": \"1\",\n" +
+                "    \"postalcode\": \"1111HM\",\n" +
+                "    \"provincie\": \"Zuid-Holland\",\n" +
+                "    \"role\": [\"handyman\", \"user\"]\n" +
+                "}";
+        // act
+        mvc.perform(post(endpoint)
+                .contentType(MediaType.APPLICATION_JSON).content(body))
+                // assert
+                .andExpect(status().isOk())
+                .andExpect(content().contentTypeCompatibleWith(MediaType.APPLICATION_JSON))
+                .andExpect(jsonPath("$.message", equalTo ("User registered successfully!")));
 
 
     }
