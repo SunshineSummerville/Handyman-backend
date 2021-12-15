@@ -1,6 +1,6 @@
 package nl.novi.summerville.springboot.example.security.exception;
 
-public class ReservationNotFoundException extends RuntimeException { //Runtimeexception zorgt ervoor dat je app door kan blijven draaien, wanneer je een foutmelding krijgt
+public class ReservationNotFoundException extends RuntimeException {
 
     /**
      * Creates the ReservationNotFoundException

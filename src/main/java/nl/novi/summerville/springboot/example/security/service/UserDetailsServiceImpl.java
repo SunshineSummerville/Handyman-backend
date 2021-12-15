@@ -19,6 +19,7 @@ public class UserDetailsServiceImpl implements UserDetailsService {
         this.userRepository = userRepository;
     }
 
+
     @Override
     @Transactional
     public UserDetails loadUserByUsername(String username)  {
@@ -26,6 +27,5 @@ public class UserDetailsServiceImpl implements UserDetailsService {
                 .orElseThrow(() -> new UsernameNotFoundException("User Not Found: " + username));
         return UserDetailsImpl.build(user);
     }
-//
 
 }

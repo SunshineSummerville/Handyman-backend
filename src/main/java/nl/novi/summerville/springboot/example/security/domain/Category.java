@@ -1,7 +1,6 @@
 package nl.novi.summerville.springboot.example.security.domain;
 
 import com.fasterxml.jackson.annotation.JsonIdentityInfo;
-import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 import org.hibernate.annotations.GenericGenerator;
@@ -17,25 +16,25 @@ public class Category {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO, generator = "native")
     @GenericGenerator(name = "native", strategy = "native")
-    @Column(columnDefinition = "serial") //serial elke entry ophogen met 1 opvolgende
+    @Column(columnDefinition = "serial")
     private long id;
+
     @Column
-    private String name;// = Primary Key
+    private String name;
+
     @Column(nullable = false)
     private String price; // start tarief - optioneel
+
     @Column(nullable = false)
     private String jobDescription;
 
-
     @JsonManagedReference
     @ManyToMany(fetch = FetchType.LAZY)
-//    (mappedBy = "possible_categories",
-//    fetch = FetchType.LAZY)
     private List<User> handymen;
 
 
 
-    public Category(){ //lege constuctor
+    public Category(){
 
     }
 

@@ -7,7 +7,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.ResponseStatus;
 
 @ControllerAdvice
-public class ReservationNotFoundAdvice { // hiermee laat je springboot weten hoe het met de exceptie moet omgaan
+public class ReservationNotFoundAdvice {
 
     /**
      * Met ResponseBody geven we aan dat we een naar JSON geserialized object teruggeven. Dit object wordt in een

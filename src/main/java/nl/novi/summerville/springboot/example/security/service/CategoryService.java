@@ -17,17 +17,12 @@ public class CategoryService {
     @Autowired
     public UserRepository userRepository;
 
+
     public List<Category> getAllCategories() {
         List<Category> allCategories = categoryRepository.findAll();
         return allCategories;
 
     }
 
-//    public Category getHandymenByCategoryId (long id) {
-////        List<User> CategoryPerHandyman = userRepository.findUsersByCategoryId(id); // variable moet nog leesbare naam krijgem hoor..
-//        Category CategoryPerHandyman = categoryRepository.findById(id);
-//        CategoryPerHandyman.setHandymen();
-//        return CategoryPerHandyman;
-//    }
 
 }
