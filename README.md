@@ -117,6 +117,7 @@ body
     ]
 }
 ```
+![GetUserByUsername](https://user-images.githubusercontent.com/66301166/147088816-20d88037-4d3d-46b8-a7cc-0f60deff9a83.png)
 
 ### POST /api/user/{id}/categories
 A handyman can use this endpoint to update their service list. When a handyman expands their services they can be added 
@@ -140,6 +141,8 @@ body
 19
 ```
 
+![Add Service](https://user-images.githubusercontent.com/66301166/147089374-4d370d02-f157-4dfb-a62d-7976a7ac181f.png)
+
 ### DELETE /api/user/{id}/categories 
 A handyman can use this endpoint to delete services from their service list. When a handyman decides to stop offering a 
 service, the handyman can update the service list by unchecking a checkbox of the corresponding service. The ID in the
@@ -161,9 +164,12 @@ body
 ```json
 19
 ```
+![Delete Service](https://user-images.githubusercontent.com/66301166/147089669-47b0d1f8-2cf0-4c7a-a583-6d17ff3c6686.png)
+
 
 ### GET /api/user/{id}/reservations
 With this endpoint a user can retrieve all of their personal reservations. 
+The ID in the endpoint refers to a specific handyman. In this example, the ID is:2
 
 Request:
 
@@ -275,6 +281,7 @@ body
   }
 ]
 ```
+![ReservationsByUserId](https://user-images.githubusercontent.com/66301166/147090596-27481cdd-c1ca-406e-8b49-cfb9d4a4a8e8.png)
 
 ### GET /api/categories
 Retrieves all categories. Plus any associated handyman that is providing the service. 
@@ -803,6 +810,7 @@ body
     }
 ]
 ```
+![All Categories](https://user-images.githubusercontent.com/66301166/147090990-c7595040-61af-452a-abff-b63503ff96b6.png)
 
 ### GET/api/reservation/{id} 
 Retrieves 1 specific reservation using the ID. Id refers to the reservation number. In this example id is 20.
@@ -848,10 +856,11 @@ body
     "image": null
 }
 ```
+![Get reservation by ID](https://user-images.githubusercontent.com/66301166/147091543-d4094b4d-e45a-49a8-82bb-684767952c9d.png)
 
 
 ### PATCH /api/reservation/{id}
-With this you adjust a reservation. In this case the id is 5 and "reservationDate" is to be adjusted from the 
+With this endpoint a handyman is able to adjust a reservation. In this case the id is 5 and "reservationDate" is to be adjusted from the 
 reservation. From the url it can be depicted which reservation needs to be adjusted on the basis
 of the ID. Moreover, the new "reservationData" is given in the body.
 
@@ -900,6 +909,7 @@ body
     "image": null
 }
 ```
+![Update reservation](https://user-images.githubusercontent.com/66301166/147092322-dc585222-7347-4cdf-a47e-99b1ed79601c.png)
 
 ### POST /api/reservation
 You can use this endpoint to make a new reservation.  
@@ -1009,6 +1019,7 @@ body
     "image": null
 }
 ```
+![New Reservation - witouth image](https://user-images.githubusercontent.com/66301166/147092856-9818ef37-8252-4a7d-a7f8-9d11159928c5.png)
 
 
 ### POST /api/auth/signin
@@ -1041,6 +1052,8 @@ body
     "accessToken": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJsdHVybmJ1bGwxIiwiaWF0IjoxNjQwMDAwNjI3LCJleHAiOjE2NDAwODcwMjd9.oCHdcD0dV7Am4IqbWNIWYaJ7pOk0JkMkYX-bNCo6mzwEg3tjmQYND0VMDGk1XQevebZWwqvpOLM5zJ81EBJPBA"
 }
 ```
+![SignIn](https://user-images.githubusercontent.com/66301166/147093290-eecbff1a-5ebf-46e3-ab10-005ca3702208.png)
+
 
 ### POST /api/auth/signup
 To register as a new user, you can go to the following endpoint and fill in the registration form. For this endpoint a token is not required.
@@ -1074,5 +1087,6 @@ body
 }
 ```
 
+![SignUp ](https://user-images.githubusercontent.com/66301166/147093646-d88da4f7-8d7a-40e9-b2aa-a446970fe2f9.png)
 
 
