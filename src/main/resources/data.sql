@@ -18,11 +18,11 @@ INSERT INTO role(name) VALUES('ROLE_ADMIN');
 insert into category (job_description, name, price) values ('plumbing is for the pipes', 'Plumber', 35);
 insert into category (job_description, name, price) values ('paint the walls and stuff', 'Painter', 90);
 insert into category (job_description, name, price) values ('Switch a lightbulb', 'Electrician', 74);
-insert into category (job_description, name, price) values ('Get some glass windows', 'Glazier', 92);
+insert into category (job_description, name, price) values ('Get some glass windows', 'Welder', 92);
 insert into category (job_description, name, price) values ('Landscaping & weeding', 'Gardener', 86);
 insert into category (job_description, name, price) values ('Need a new lock?', 'Locksmith', 84);
 insert into category (job_description, name, price) values ('human-resource', 'Carpenter', 94);
-insert into category (job_description, name, price) values ('Intuitive', 'Fire Protection', 80);
+insert into category (job_description, name, price) values ('Intuitive', 'Fence fixer', 80);
 insert into category (job_description, name, price) values ('Function-based', 'Fire Protection', 77);
 insert into category (job_description, name, price) values ('Implemented', 'Waterproofing & Caulking', 92);
 insert into category (job_description, name, price) values ('website', 'Roofing (Metal)', 32);
@@ -30,11 +30,11 @@ insert into category (job_description, name, price) values ('Synergized', 'Elect
 insert into category (job_description, name, price) values ('Expanded', 'Soft Flooring and Base', 47);
 insert into category (job_description, name, price) values ('circuit', 'Waterproofing & Caulking', 75);
 insert into category (job_description, name, price) values ('time-frame', 'Epoxy Flooring', 98);
-insert into category (job_description, name, price) values ('stable', 'Waterproofing & Caulking', 36);
-insert into category (job_description, name, price) values ('algorithm', 'Fire Sprinkler System', 41);
-insert into category (job_description, name, price) values ('Future-proofed', 'EIFS', 48);
-insert into category (job_description, name, price) values ('upward-trending', 'Marlite Panels (FED)', 64);
-insert into category (job_description, name, price) values ('holistic', 'Electrical', 88);
+insert into category (job_description, name, price) values ('stable', 'Roofing', 36);
+insert into category (job_description, name, price) values ('algorithm', 'Mason', 41);
+insert into category (job_description, name, price) values ('Future-proofed', 'Broken window repair', 48);
+insert into category (job_description, name, price) values ('upward-trending', 'Toilet repair', 64);
+insert into category (job_description, name, price) values ('holistic', 'Solar panel installation', 88);
 
 
 
