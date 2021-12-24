@@ -14,6 +14,7 @@ import nl.novi.summerville.springboot.example.security.service.ReservationServic
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.Optional;
@@ -36,12 +37,14 @@ public class ReservationController {
     public CategoryRepository categoryRepository;
 
 
+    @PreAuthorize("hasRole('USER') or hasRole('HANDYMAN')")
     @GetMapping(value = "/api/reservation/{id}")
     public Reservation getReservation(@PathVariable Long id) {
         return reservationRepository.findById(id).orElseThrow(
                 () -> new ReservationNotFoundException(id));
     }
 
+    @PreAuthorize("hasRole('HANDYMAN')")
     @PatchMapping(value = "/api/reservation/{id}")
     public ResponseEntity<Reservation> modifyReservationsById  (@PathVariable long id, @RequestBody ModifyReservationRequest modifyReservationRequest) {
         Reservation updatedReservation = reservationService.modifyReservationsById(id,modifyReservationRequest);
@@ -50,6 +53,7 @@ public class ReservationController {
 
     }
 
+    @PreAuthorize("hasRole('USER')")
     @PostMapping(value = "/api/reservation")
     public ResponseEntity<ReservationResponse> saveReservation(@RequestBody ReservationRequest reservationRequest) {
         long handymanId = reservationRequest.getHandymanId();
