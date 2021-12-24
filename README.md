@@ -6,7 +6,7 @@ keeping "Windows" users in mind who use the "localhost" on a computer. Pls keep 
 
 - Server or localhost
 - JDK
-- MySql
+- Postgres
 - Postman
 - IntelliJ IDEA
 - Google Chrome
@@ -23,11 +23,11 @@ is the programming language that is applied to write the backend. Like an engine
 example. Once installed, this program will be used in IntelliJ IDEA.
 Please find the installation instructions here: https://www.oracle.com/java/technologies/downloads/#java11-windows
 
-MySql
+Postgres
 This software is to be used to run the database of this application. A database is used to save information. Like when
 a user is registered. the user information will be saved in the database. Once installed, pls search for an app called 
 "pgAdmin". With this app you will be able to run the software in order run and access your database.
-Please find the installation instructions here: https://dev.mysql.com/downloads/installer/
+Please find the installation instructions here: https://www.postgresql.org/download/windows/
 
 Postman
 To simulate an API request you can use Postman. This can be done via the browser or a downloaded version. Postman is an 
