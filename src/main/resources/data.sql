@@ -61,25 +61,25 @@ insert into app_user (firstname, lastname, email, password, phonenumber, postalc
 
 
 insert into reservation (reservation_date, category_id, customer_id, handyman_id) values ('2021-11-24', 2, 1, 2);
-insert into reservation (reservation_date, category_id, customer_id, handyman_id) values ('6/20/2021', 19, 3, 4);
-insert into reservation (reservation_date, category_id, customer_id, handyman_id) values ('6/3/2021', 11, 5, 6);
-insert into reservation (reservation_date, category_id, customer_id, handyman_id) values ('8/7/2021', 12, 7, 8);
-insert into reservation (reservation_date, category_id, customer_id, handyman_id) values ('9/15/2021', 18, 9,10);
-insert into reservation (reservation_date, category_id, customer_id, handyman_id) values ('12/16/2020', 4, 11, 12);
-insert into reservation (reservation_date, category_id, customer_id, handyman_id) values ('11/5/2020', 14, 13, 14);
-insert into reservation (reservation_date, category_id, customer_id, handyman_id) values ('5/26/2021', 16, 15, 16);
-insert into reservation (reservation_date, category_id, customer_id, handyman_id) values ('10/29/2020', 12, 17, 18);
-insert into reservation (reservation_date, category_id, customer_id, handyman_id) values ('5/18/2021', 3, 19, 20);
-insert into reservation (reservation_date, category_id, customer_id, handyman_id) values ('2/14/2021', 19, 1, 2);
-insert into reservation (reservation_date, category_id, customer_id, handyman_id) values ('10/4/2020', 7, 3, 4);
-insert into reservation (reservation_date, category_id, customer_id, handyman_id) values ('10/28/2020', 11, 5, 6);
-insert into reservation (reservation_date, category_id, customer_id, handyman_id) values ('6/13/2021', 16, 7, 8);
-insert into reservation (reservation_date, category_id, customer_id, handyman_id) values ('2/4/2021', 2, 9, 10);
-insert into reservation (reservation_date, category_id, customer_id, handyman_id) values ('8/16/2021', 10, 11, 12);
-insert into reservation (reservation_date, category_id, customer_id, handyman_id) values ('4/16/2021', 6, 13, 14);
-insert into reservation (reservation_date, category_id, customer_id, handyman_id) values ('1/8/2021', 19, 15, 16);
-insert into reservation (reservation_date, category_id, customer_id, handyman_id) values ('2/18/2021', 7, 17, 20);
-insert into reservation (reservation_date, category_id, customer_id, handyman_id) values ('12/2/2020', 14, 19, 4);
+insert into reservation (reservation_date, category_id, customer_id, handyman_id) values ('2021-8-20', 19, 3, 4);
+insert into reservation (reservation_date, category_id, customer_id, handyman_id) values ('2021-10-15', 11, 5, 6);
+insert into reservation (reservation_date, category_id, customer_id, handyman_id) values ('2021-1-12', 12, 7, 8);
+insert into reservation (reservation_date, category_id, customer_id, handyman_id) values ('2021-2-13', 18, 9,10);
+insert into reservation (reservation_date, category_id, customer_id, handyman_id) values ('2021-3-15', 4, 11, 12);
+insert into reservation (reservation_date, category_id, customer_id, handyman_id) values ('2021-4-16', 14, 13, 14);
+insert into reservation (reservation_date, category_id, customer_id, handyman_id) values ('2021-5-17', 16, 15, 16);
+insert into reservation (reservation_date, category_id, customer_id, handyman_id) values ('2021-6-19', 12, 17, 18);
+insert into reservation (reservation_date, category_id, customer_id, handyman_id) values ('2021-7-20', 3, 19, 20);
+insert into reservation (reservation_date, category_id, customer_id, handyman_id) values ('2021-8-21', 19, 1, 2);
+insert into reservation (reservation_date, category_id, customer_id, handyman_id) values ('2021-9-22', 7, 3, 4);
+insert into reservation (reservation_date, category_id, customer_id, handyman_id) values ('2021-10-23', 11, 5, 6);
+insert into reservation (reservation_date, category_id, customer_id, handyman_id) values ('2021-11-24', 16, 7, 8);
+insert into reservation (reservation_date, category_id, customer_id, handyman_id) values ('2021-12-20', 2, 9, 10);
+insert into reservation (reservation_date, category_id, customer_id, handyman_id) values ('2021-1-21', 10, 11, 12);
+insert into reservation (reservation_date, category_id, customer_id, handyman_id) values ('2021-5-22', 6, 13, 14);
+insert into reservation (reservation_date, category_id, customer_id, handyman_id) values ('2021-6-25', 19, 15, 16);
+insert into reservation (reservation_date, category_id, customer_id, handyman_id) values ('2021-7-26', 7, 17, 20);
+insert into reservation (reservation_date, category_id, customer_id, handyman_id) values ('2021-8-27', 14, 19, 4);
 
 insert into user_role (user_id, role_id) values (1,1);
 insert into user_role (user_id, role_id) values (2,2);
