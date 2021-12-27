@@ -17,25 +17,25 @@ There has to be a device set up where you are able to run the application and th
 should install all the required software to run the application. You can run the application on your computer even if
 there is not a server available. This installation guide is made for the "localhost".
 
-#####JDK 
+##### JDK 
 JDK stands for Java Development Kit. With this software you wil be able to startup the java code. The "Java" code,
 is the programming language that is applied to write the backend. Like an engine that is needed to start a car for
 example. Once installed, this program will be used in IntelliJ IDEA.
 Please find the installation instructions here: https://www.oracle.com/java/technologies/downloads/#java11-windows
 
-#####Postgres 
+##### Postgres 
 This software is to be used to run the database of this application. A database is used to save information. Like when
 a user is registered. the user information will be saved in the database. Once installed, pls search for an app called 
 "pgAdmin". With this app you will be able to run the software in order run and access your database.
 Please find the installation instructions here: https://www.postgresql.org/download/windows/
 
-#####Postman
+##### Postman
 To simulate an API request you can use Postman. This can be done via the browser or a downloaded version. Postman is an 
 application that is used as a tool to test the performance of an application that one is developing. Moreover, it is 
 often used to test the performance of the API requests from the backend.
 Please find the installation instructions here: https://www.guru99.com/postman-tutorial.html
 
-#####IntelliJ IDEA
+##### IntelliJ IDEA
 It is recommended to download this software in order to see the code of this application. The application is run via
 this program Both the frontend, and the backend code is written in IntelliJ IDEA.  IntelliJ IDEA is software that is
 used to write code for an application that one is developing. When opening the front end project, there are a two 
@@ -59,7 +59,7 @@ This step only needs to be done once. Then click on the "run button" to start ru
 top of the screen that looks like a "play button" shaped as a triangle. 
 Please find the installation instructions here: https://www.jetbrains.com/idea/download/#section=windows
 
-#####Google Chrome 
+##### Google Chrome 
 Chrome is an internet webbrowser which can be used to acces and surf the WWW (World Wide Web) also known as the internet.
 Please find the installation instructions here: https://www.google.com/chrome/
 
