@@ -63,7 +63,24 @@ Google Chrome
 Chrome is an internet webbrowser which can be used to acces and surf the WWW (World Wide Web) also known as the internet.
 Please find the installation instructions here: https://www.google.com/chrome/
 
+## Test users
+Handyman
+```json
+{
+    "username": "lturnbull1",
+    "password" : "abcd1234"
+    "roles": ["ROLE_HANDYMAN"]
+}
+```
 
+Customer
+```json
+{
+    "username": "cmcalindon0",
+    "password" : "abcd1234"
+    "roles": ["ROLE_USER"]
+}
+```
 
 ## Rest endpoints
 
