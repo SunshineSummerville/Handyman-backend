@@ -12,7 +12,7 @@ keeping "Windows" users in mind who use the "localhost" on a computer. Pls keep 
 - Google Chrome
 
 
-Server or localhost
+##### Server or localhost
 There has to be a device set up where you are able to run the application and the database. This is the device where you
 should install all the required software to run the application. You can run the application on your computer even if
 there is not a server available. This installation guide is made for the "localhost".
